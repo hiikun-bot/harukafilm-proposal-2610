@@ -1,0 +1,1822 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>011 KENRO様 SNS×AI 発信のご提案 | HARUKA FILM</title>
+<link rel="stylesheet" href="./_design-system/deck-styles.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&display=swap" />
+<style>deck-stage:not(:defined){visibility:hidden}</style>
+<style>
+  /* =========================================================
+     011 ローカルスタイル — KENRO様 SNS×AI 発信のご提案
+     デザインは 009 を継承。紹介者経由で社長が一人で読む前提の「読む資料」。
+     脱・AIっぽさ運用ルール:
+       - カード(角丸箱)を並べない。区切りは全幅の帯とヘアライン
+       - 角丸は 8px 以下。box-shadow は使わない
+       - 配色は 白 / ivory / ink / slate / teal 系トークンのみ
+     文字サイズの下限: 本文 26px / 強調 30px / 見出し 36px
+     アイコンは ICOOON MONO を CSS mask で着色
+     ========================================================= */
+
+  /* ---- ICOOON MONO アイコン(CSSマスクで着色) ---- */
+  .icon-mask {
+    display: inline-block;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+  .icon--megaphone { -webkit-mask-image: url("./assets/icons/icon_10881.svg"); mask-image: url("./assets/icons/icon_10881.svg"); }
+  .icon--target    { -webkit-mask-image: url("./assets/icons/icon_11489.svg"); mask-image: url("./assets/icons/icon_11489.svg"); }
+  .icon--gear      { -webkit-mask-image: url("./assets/icons/icon_00001.svg"); mask-image: url("./assets/icons/icon_00001.svg"); }
+  .icon--camera    { -webkit-mask-image: url("./assets/icons/icon_00068.svg"); mask-image: url("./assets/icons/icon_00068.svg"); }
+  .icon--screen    { -webkit-mask-image: url("./assets/icons/icon_10990.svg"); mask-image: url("./assets/icons/icon_10990.svg"); }
+  .icon--idea      { -webkit-mask-image: url("./assets/icons/icon_10245.svg"); mask-image: url("./assets/icons/icon_10245.svg"); }
+  .icon--team      { -webkit-mask-image: url("./assets/icons/icon_11186.svg"); mask-image: url("./assets/icons/icon_11186.svg"); }
+  .icon--growth    { -webkit-mask-image: url("./assets/icons/icon_10593.svg"); mask-image: url("./assets/icons/icon_10593.svg"); }
+  .icon--chat      { -webkit-mask-image: url("./assets/icons/icon_11209.svg"); mask-image: url("./assets/icons/icon_11209.svg"); }
+  .icon--check     { -webkit-mask-image: url("./assets/icons/icon_11451.svg"); mask-image: url("./assets/icons/icon_11451.svg"); }
+  .icon--draft     { -webkit-mask-image: url("./assets/icons/icon_00051.svg"); mask-image: url("./assets/icons/icon_00051.svg"); }
+  .icon--shake     { -webkit-mask-image: url("./assets/icons/icon_11429.svg"); mask-image: url("./assets/icons/icon_11429.svg"); }
+  .icon--mic       { -webkit-mask-image: url("./assets/icons/icon_00220.svg"); mask-image: url("./assets/icons/icon_00220.svg"); }
+  .icon--loupe     { -webkit-mask-image: url("./assets/icons/icon_00039.svg"); mask-image: url("./assets/icons/icon_00039.svg"); }
+  .icon--sprout    { -webkit-mask-image: url("./assets/icons/icon_10009.svg"); mask-image: url("./assets/icons/icon_10009.svg"); }
+  .icon--bag       { -webkit-mask-image: url("./assets/icons/icon_11421.svg"); mask-image: url("./assets/icons/icon_11421.svg"); }
+
+  /* ---- 数字フォント(Barlow Semi Condensed SemiBold・同梱) ---- */
+  @font-face {
+    font-family: "Barlow Semi Condensed";
+    src: url("./assets/fonts/BarlowSemiCondensed-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-display: block;
+  }
+  .step-node__num,
+  .kpi__num,
+  .price__num,
+  .plan__price,
+  .flow-day {
+    font-family: "Barlow Semi Condensed", "Avenir Next Condensed", "DIN Condensed", var(--font-en) !important;
+    font-weight: 600 !important;
+  }
+
+  /* ---- 統一グリッド(009 と同値) 上 56 / 左右 100 / 下 100 ---- */
+  deck-stage .slide-paper { padding: 56px 100px 100px !important; display: flex; flex-direction: column; }
+  deck-stage .deck-header { margin-bottom: 24px !important; }
+  deck-stage .slide-h2 {
+    font-size: 56px !important;
+    line-height: 1.2 !important;
+    margin: 0 0 14px !important;
+  }
+  deck-stage .slide-lead {
+    font-size: 26px !important;
+    line-height: 1.6 !important;
+    margin: 0 0 20px !important;
+    max-width: none !important;
+    color: var(--color-ink);
+  }
+  deck-stage .deck-footer { left: 100px !important; right: 100px !important; }
+  .slide-h2 .accent { color: var(--color-deep-teal); }
+
+  /* ---- 表紙 ---- */
+  .cover__tagline {
+    margin-top: 40px;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: var(--color-ivory);
+    padding-left: 0.3em;
+  }
+
+  /* ---- 全幅の帯(締めの一言) ---- */
+  .band {
+    margin: auto -100px 0;
+    padding: 30px 100px;
+    background: var(--color-abyss-teal);
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+  .band__icon { flex: none; color: var(--color-brand-teal); line-height: 0; }
+  .band__icon .icon-mask { width: 56px; height: 56px; }
+  .band p {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.7;
+    color: var(--color-ivory);
+    font-weight: 600;
+  }
+  .band em {
+    font-style: normal;
+    font-weight: 800;
+    color: var(--color-white);
+    background: linear-gradient(transparent 62%, rgba(78, 205, 196, 0.5) 62%, rgba(78, 205, 196, 0.5) 92%, transparent 92%);
+    padding: 0 3px;
+  }
+
+  /* ---- 横ステップ図解(009 s03 正本) ---- */
+  .step-flow {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr 48px 1fr;
+    align-items: stretch;
+    margin-top: 28px;
+  }
+  .step-node {
+    border: 1.5px solid rgba(78, 205, 196, 0.55);
+    border-radius: 8px;
+    background: var(--color-white);
+    padding: 24px 32px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+  .step-node__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .step-node__num {
+    font-size: 76px;
+    line-height: 1;
+    color: rgba(78, 205, 196, 0.4);
+  }
+  .step-node__icon { color: var(--color-brand-teal); line-height: 0; padding-top: 6px; }
+  .step-node__icon .icon-mask { width: 54px; height: 54px; }
+  .step-node__title {
+    margin: 0 0 10px;
+    font-size: 31px;
+    font-weight: 800;
+    color: var(--color-ink);
+  }
+  .step-node__desc {
+    margin: 0;
+    font-size: 26px;
+    line-height: 1.6;
+    color: var(--color-ink);
+  }
+  .step-conn { position: relative; }
+  .step-conn::before {
+    content: "";
+    position: absolute;
+    left: -2px; right: -2px; top: 50%;
+    height: 2px;
+    background: rgba(78, 205, 196, 0.55);
+  }
+  .step-conn::after {
+    content: "";
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 10px; height: 10px;
+    margin: -5px 0 0 -5px;
+    border-radius: 50%;
+    background: var(--color-brand-teal);
+  }
+
+  /* ---- s02 ご要望の読み替え(3行・ヘアライン) ---- */
+  .remap { margin-top: 18px; }
+  .remap__head,
+  .remap__row {
+    display: grid;
+    grid-template-columns: 76px 1fr 64px 1.25fr;
+    align-items: center;
+    column-gap: 20px;
+  }
+  .remap__head {
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-ink);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-slate);
+  }
+  .remap__row {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--color-hairline);
+  }
+  .remap__icon { color: var(--color-brand-teal); line-height: 0; }
+  .remap__icon .icon-mask { width: 56px; height: 56px; }
+  .remap__wish { margin: 0; font-size: 32px; font-weight: 800; color: var(--color-ink); }
+  .remap__arrow { height: 2px; background: rgba(78, 205, 196, 0.55); position: relative; }
+  .remap__arrow::after {
+    content: "";
+    position: absolute;
+    right: -2px; top: -6px;
+    border-left: 12px solid var(--color-brand-teal);
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+  }
+  .remap__goal { margin: 0; font-size: 32px; font-weight: 800; color: var(--color-deep-teal); }
+  .remap__goal small { display: block; margin-top: 6px; font-size: 26px; font-weight: 500; color: var(--color-ink); }
+
+  /* ---- s03 現在地(左:投稿の引用+数字 / 右:当たった理由) ---- */
+  .now-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; margin-top: 12px; }
+  .post-quote {
+    margin: 0;
+    padding: 6px 0 6px 32px;
+    border-left: 4px solid var(--color-brand-teal);
+    font-size: 28px;
+    line-height: 1.75;
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .post-quote cite {
+    display: block;
+    margin-top: 12px;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--color-slate);
+  }
+  .kpi-row { display: flex; gap: 56px; margin-top: 36px; }
+  .kpi__num { font-size: 88px; line-height: 1; color: var(--color-deep-teal); }
+  .kpi__num small { font-size: 40px; margin-left: 4px; }
+  .kpi__label { margin: 8px 0 0; font-size: 24px; font-weight: 700; color: var(--color-ink); }
+  .reason-list { margin: 0; padding: 0; list-style: none; }
+  .reason-list li {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--color-hairline);
+  }
+  .reason-list li:first-child { border-top: 2px solid var(--color-ink); }
+  .reason-list__num { font-family: var(--font-en); font-size: 34px; font-weight: 700; color: var(--color-brand-teal); }
+  .reason-list__title { margin: 0; font-size: 31px; font-weight: 800; color: var(--color-ink); }
+  .reason-list__desc { margin: 6px 0 0; font-size: 26px; line-height: 1.55; color: var(--color-ink); }
+
+  /* ---- s05 濃いフォロワー(数を追う運用 vs 密度を上げる運用) ---- */
+  .vs { margin-top: 18px; }
+  .vs__head,
+  .vs__row {
+    display: grid;
+    grid-template-columns: 240px 1fr 1fr;
+    column-gap: 40px;
+    align-items: center;
+  }
+  .vs__head { padding-bottom: 14px; border-bottom: 2px solid var(--color-ink); }
+  .vs__head p { margin: 0; font-size: 28px; font-weight: 800; }
+  .vs__head .vs__weak { color: var(--color-slate); }
+  .vs__head .vs__strong { color: var(--color-deep-teal); }
+  .vs__row { padding: 24px 0; border-bottom: 1px solid var(--color-hairline); }
+  .vs__label { margin: 0; font-size: 26px; font-weight: 700; color: var(--color-slate); letter-spacing: 0.06em; }
+  .vs__row .vs__weak { margin: 0; font-size: 28px; color: var(--color-slate); }
+  .vs__row .vs__strong { margin: 0; font-size: 30px; font-weight: 800; color: var(--color-ink); }
+  .vs__strong-col { background: var(--color-mist-teal); }
+
+  /* ---- s06 現場で動いているAI(2列×3行・ヘアライン) ---- */
+  .sys-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 72px;
+    margin-top: 10px;
+    border-top: 2px solid var(--color-ink);
+  }
+  .sys {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    column-gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--color-hairline);
+  }
+  .sys__icon { color: var(--color-brand-teal); line-height: 0; padding-top: 4px; }
+  .sys__icon .icon-mask { width: 48px; height: 48px; }
+  .sys__title { margin: 0; font-size: 30px; font-weight: 800; color: var(--color-ink); }
+  .sys__desc { margin: 4px 0 0; font-size: 26px; line-height: 1.5; color: var(--color-ink); }
+
+  /* ---- s07 事例の成果(KPI 3つ + 本人の声) ---- */
+  .case-kpis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 20px;
+    border-top: 2px solid var(--color-ink);
+    border-bottom: 1px solid var(--color-hairline);
+  }
+  .case-kpi { padding: 30px 0 26px; }
+  .case-kpi + .case-kpi { border-left: 1px solid var(--color-hairline); padding-left: 48px; }
+  .case-kpi .kpi__num { font-size: 120px; }
+  .case-kpi .kpi__num small { font-size: 48px; }
+  .case-kpi__label { margin: 12px 0 0; font-size: 28px; font-weight: 800; color: var(--color-ink); }
+  .case-kpi__note { margin: 6px 0 0; font-size: 22px; color: var(--color-slate); }
+  .voices { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 34px; }
+  .voice {
+    margin: 0;
+    padding-left: 28px;
+    border-left: 4px solid var(--color-brand-teal);
+    font-size: 30px;
+    line-height: 1.6;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  .voices--3 { grid-template-columns: repeat(3, 1fr); gap: 44px; }
+  .voices--3 .voice { font-size: 28px; }
+  .voice cite { display: block; margin-top: 10px; font-size: 22px; font-style: normal; font-weight: 500; color: var(--color-slate); }
+
+  /* ---- s09 AIに強い制作チーム(3つの強み・縦リスト) ---- */
+  .strengths { margin-top: 14px; border-top: 2px solid var(--color-ink); }
+  .strength {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    column-gap: 28px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--color-hairline);
+  }
+  .strength__icon { color: var(--color-brand-teal); line-height: 0; }
+  .strength__icon .icon-mask { width: 72px; height: 72px; }
+  .strength__title { margin: 0; font-size: 36px; font-weight: 800; color: var(--color-ink); }
+  .strength__title em { font-style: normal; color: var(--color-deep-teal); }
+  .strength__desc { margin: 8px 0 0; font-size: 26px; line-height: 1.6; color: var(--color-ink); }
+
+  /* ---- s10 代表紹介(左:写真 / 右:経歴+実績) ---- */
+  .profile-grid { display: grid; grid-template-columns: 400px 1fr; gap: 64px; margin-top: 8px; }
+  .profile-photo { height: 470px; display: flex; align-items: flex-end; justify-content: center; position: relative; }
+  .profile-photo::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -30px;
+    width: 180px; height: 180px;
+    background: var(--color-mist-teal);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+  .profile-photo img { position: relative; max-height: 100%; max-width: 100%; object-fit: contain; }
+  .profile-name { margin: 16px 0 0; font-size: 40px; font-weight: 800; color: var(--color-ink); }
+  .profile-name small { margin-left: 16px; font-size: 22px; font-weight: 500; color: var(--color-slate); }
+  .profile-role { margin: 6px 0 0; font-size: 24px; font-weight: 700; color: var(--color-deep-teal); }
+  .career { margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--color-ink); }
+  .career li {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    column-gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--color-hairline);
+    font-size: 26px;
+    line-height: 1.5;
+  }
+  .career b { font-weight: 800; color: var(--color-deep-teal); }
+  .clients { margin-top: 28px; }
+  .clients__label { margin: 0 0 10px; font-size: 22px; font-weight: 700; letter-spacing: 0.12em; color: var(--color-slate); }
+  .clients__list { margin: 0; font-size: 26px; line-height: 1.7; font-weight: 700; color: var(--color-ink); }
+
+  /* ---- 主な支援実績(ロゴ 4×2・ヘアライン) ---- */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 20px;
+    border-top: 2px solid var(--color-ink);
+  }
+  .logo-cell {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 40px;
+    border-bottom: 1px solid var(--color-hairline);
+    border-right: 1px solid var(--color-hairline);
+    background: var(--color-white);
+  }
+  .logo-cell:nth-child(4n) { border-right: none; }
+  .logo-cell img { max-width: 100%; max-height: 92px; object-fit: contain; }
+  .logo-cell--text { flex-direction: column; font-size: 34px; font-weight: 800; color: var(--color-ink); text-align: center; }
+  .logo-cell--text small { margin-top: 6px; font-size: 22px; font-weight: 600; color: var(--color-slate); }
+  .logo-more { margin: 32px 0 0; font-size: 28px; line-height: 1.7; font-weight: 700; color: var(--color-ink); }
+
+  /* ---- s07 建設分野の実績(売上を主役に) ---- */
+  .hero-case {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 64px;
+    margin-top: 18px;
+    border-top: 2px solid var(--color-ink);
+    padding-top: 28px;
+  }
+  .hero-case__label { margin: 0; font-size: 30px; font-weight: 800; color: var(--color-ink); }
+  .hero-case__num {
+    margin: 4px 0 0;
+    font-family: "Barlow Semi Condensed", "Avenir Next Condensed", var(--font-en);
+    font-weight: 600;
+    font-size: 240px;
+    line-height: 1;
+    color: var(--color-deep-teal);
+  }
+  .hero-case__num--full { font-size: 150px; letter-spacing: -0.01em; margin-top: 18px; }
+  .hero-case__num--full small { font-size: 60px !important; }
+  .hero-case__num small { font-family: var(--font-jp); font-size: 80px; font-weight: 800; margin-left: 8px; }
+  .hero-case__sub { margin: 16px 0 0; font-size: 30px; line-height: 1.6; color: var(--color-ink); }
+  .hero-case__sub b { color: var(--color-deep-teal); font-weight: 800; }
+  .hero-case__side { margin: 0; padding: 0; list-style: none; }
+  .hero-case__side li { padding: 14px 0; border-bottom: 1px solid var(--color-hairline); }
+  .hero-case__side li:first-child { padding-top: 0; }
+  .hero-case__side .kpi__num { margin: 0; font-size: 72px; }
+  .hero-case__side .kpi__num small { font-size: 32px; }
+  .hero-case__k { margin: 4px 0 0; font-size: 24px; font-weight: 700; color: var(--color-ink); }
+
+  /* ---- AI生成動画の実績(縦動画3本) ---- */
+  .ai-videos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; margin-top: 10px; justify-items: center; }
+  .ai-video { margin: 0; width: 330px; }
+  .ai-video video { display: block; width: 330px; height: 587px; object-fit: cover; border-radius: 8px; background: var(--color-ink); }
+  .ai-video figcaption { margin-top: 12px; font-size: 24px; font-weight: 700; color: var(--color-ink); text-align: center; }
+  /* ---- 代表紹介: 実績ロゴ列 ---- */
+  .clients__logos { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 14px 0; border-top: 1px solid var(--color-hairline); border-bottom: 1px solid var(--color-hairline); }
+  .clients__logos img { height: 40px; max-width: 150px; object-fit: contain; }
+  .clients__more { margin: 12px 0 0; font-size: 24px; font-weight: 700; color: var(--color-ink); }
+
+  /* ---- 締め: CTA(濃色背景 / 左=呼びかけ 右=次の3ステップ / 下=連絡先) ---- */
+  deck-stage .slide-paper.cta { background: var(--color-abyss-teal) !important; padding: 110px 100px 110px !important; }
+  .cta::before { content: ""; position: absolute; inset: 0; background: url("./assets/photo/gen/band-city.jpg") center 65% / cover no-repeat; }
+  .cta::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,38,40,.94) 0%, rgba(10,38,40,.86) 50%, rgba(10,38,40,.6) 100%); }
+  .cta > * { position: relative; z-index: 1; }
+  .cta p { color: var(--color-ivory); }
+  .cta__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 96px; align-items: center; }
+  .cta__eyebrow { margin: 0; font-family: var(--font-en); font-size: 24px; font-weight: 700; letter-spacing: 0.3em; color: var(--color-brand-teal) !important; }
+  .cta__title { margin: 22px 0 0; font-size: 64px; font-weight: 800; line-height: 1.35; color: var(--color-white) !important; }
+  .cta__title em { font-style: normal; color: var(--color-brand-teal); }
+  .cta__lead { margin: 30px 0 0; font-size: 28px; line-height: 1.75; }
+  .cta__steps { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(255, 255, 255, 0.25); }
+  .cta__steps li { display: grid; grid-template-columns: 96px 1fr; align-items: center; padding: 26px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.25); }
+  .cta__num { font-family: "Barlow Semi Condensed", "Avenir Next Condensed", var(--font-en); font-weight: 600; font-size: 64px; line-height: 1; color: var(--color-brand-teal); }
+  .cta__step { margin: 0; font-size: 34px; font-weight: 800; color: var(--color-white) !important; }
+  .cta__desc { margin: 6px 0 0; font-size: 24px; line-height: 1.5; }
+  .cta__contact {
+    margin-top: auto;
+    display: flex; align-items: center; gap: 32px;
+    padding: 24px 40px;
+    border-radius: 8px;
+    background: var(--color-ivory);
+  }
+  .cta__contact img { width: 72px; height: 72px; object-fit: contain; }
+  .cta__contact p { margin: 0; color: var(--color-ink) !important; }
+  .cta__company { font-size: 30px; font-weight: 800; }
+  .cta__company span { margin-left: 24px; font-size: 26px; font-weight: 600; }
+  .cta__mail { margin-left: auto !important; font-family: var(--font-en); font-size: 30px; font-weight: 700; color: var(--color-deep-teal) !important; }
+
+  .niche-lead b { color: var(--color-deep-teal); font-weight: 800; }
+
+  /* =========================================================
+     ビジュアル強化(このデッキだけの例外: 写真・グラデ・カードを使う)
+     ========================================================= */
+  /* ---- 表紙(写真) ---- */
+  .pcover { background: var(--color-abyss-deep); color: var(--color-white); }
+  .pcover__bg { position: absolute; inset: 0; background: url("./assets/photo/gen/cover.jpg") center / cover no-repeat; }
+  .pcover__shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,38,40,.92) 0%, rgba(10,38,40,.75) 38%, rgba(10,38,40,.1) 70%, rgba(10,38,40,0) 100%); }
+  .pcover__body { position: absolute; left: 140px; top: 190px; }
+  .pcover__eyebrow { margin: 0; font-family: var(--font-en); font-size: 22px; font-weight: 600; letter-spacing: .32em; color: var(--color-brand-teal); }
+  .pcover__eyebrow span { margin-left: 28px; color: var(--color-ivory); }
+  .pcover__to { margin: 46px 0 0; font-size: 34px; font-weight: 700; letter-spacing: .12em; color: var(--color-ivory); }
+  .pcover__title { margin: 18px 0 0; font-size: 92px; font-weight: 900; line-height: 1.28; letter-spacing: .02em; color: var(--color-white); }
+  .pcover__hand { margin: 40px 0 0; font-family: "Klee One", var(--font-jp); font-size: 44px; font-weight: 600; color: #8fe3da; transform: rotate(-3deg); transform-origin: left; }
+  .pcover__foot { position: absolute; left: 140px; bottom: 90px; display: flex; align-items: center; gap: 26px; }
+  .pcover__foot img { width: 78px; height: 78px; object-fit: contain; }
+  .pcover__foot p { margin: 0; font-size: 28px; color: var(--color-ivory); }
+  .pcover__foot b { font-weight: 800; color: var(--color-white); }
+  .pcover__foot span { margin-left: 22px; font-size: 24px; }
+
+  /* ---- 01 ご要望(写真カード) ---- */
+  .req { overflow: hidden; }
+  .req__hero { position: absolute; top: 0; right: 0; width: 900px; height: 400px; clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%); }
+  .req__hero img { width: 100%; height: 100%; object-fit: cover; }
+  .req__hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(247,251,250,1) 0%, rgba(247,251,250,0) 35%); }
+  .req__hand { position: absolute; top: 60px; right: 90px; margin: 0; font-family: "Klee One", var(--font-jp); font-size: 40px; line-height: 1.35; color: var(--color-white); transform: rotate(-6deg); text-shadow: 0 2px 12px rgba(0,0,0,.35); z-index: 2; }
+  .req .deck-header, .req__h2, .req__lead { position: relative; z-index: 2; max-width: 980px; }
+  .req__h2 { font-size: 60px !important; }
+  .req__lead { margin-bottom: 26px !important; }
+  .req__cards { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .req-card {
+    position: relative; height: 400px; border-radius: 8px; overflow: hidden; padding: 30px 34px;
+    background: var(--img) center / cover no-repeat; color: var(--color-white);
+  }
+  .req-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,52,56,.85) 0%, rgba(14,52,56,.45) 48%, rgba(14,52,56,.9) 100%); }
+  .req-card > * { position: relative; }
+  .req-card__no { margin: 0; font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-style: italic; font-size: 64px; line-height: 1; color: #8fe3da; }
+  .req-card__no span { margin-left: 14px; font-family: var(--font-en); font-style: normal; font-size: 20px; letter-spacing: .2em; color: var(--color-ivory); }
+  .req-card__title { margin: 14px 0 0; font-size: 38px; font-weight: 900; color: var(--color-white); }
+  .req-card__sub { margin: 14px 0 0; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.35); font-size: 24px; line-height: 1.55; color: var(--color-ivory); }
+  .req-card__items { position: absolute !important; left: 24px; right: 24px; bottom: 22px; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
+  .req-card__items li { font-size: 20px; font-weight: 700; color: var(--color-white); }
+  .req-card__items .icon-mask { display: block; margin: 0 auto 8px; width: 40px; height: 40px; color: #8fe3da; }
+  .req__band {
+    position: relative; z-index: 2; margin-top: 22px; height: 112px; border-radius: 8px; overflow: hidden;
+    display: flex; align-items: center; gap: 48px; padding: 0 48px;
+    background: var(--img) center 60% / cover no-repeat;
+  }
+  .req__band::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,38,40,.95) 0%, rgba(10,38,40,.8) 55%, rgba(10,38,40,.35) 100%); }
+  .req__band > * { position: relative; }
+  .req__band-label { margin: 0; font-family: var(--font-en); font-size: 20px; letter-spacing: .28em; color: #8fe3da; }
+  .req__band-text { margin: 0; font-size: 28px; line-height: 1.5; font-weight: 700; color: var(--color-ivory); }
+  .req__band-text em { font-style: normal; font-size: 34px; font-weight: 900; color: #8fe3da; }
+
+  .proof { margin: 26px 0 0; display: flex; align-items: flex-end; gap: 22px; }
+  .proof img { width: 230px; border-radius: 8px; box-shadow: 0 10px 30px rgba(14,52,56,.25); transform: rotate(-2deg); }
+  .proof figcaption { font-size: 24px; font-weight: 800; color: var(--color-ink); line-height: 1.5; }
+  .proof figcaption span { font-size: 20px; font-weight: 600; color: var(--color-slate); }
+
+  /* ---- 05 前年比の棒(伴走の成果) ---- */
+  .growth { position: relative; margin-top: 22px; }
+  .growth__row { display: grid; grid-template-columns: 150px 1fr; align-items: center; column-gap: 18px; row-gap: 4px; margin-bottom: 18px; }
+  .growth__tag { margin: 0; font-size: 24px; font-weight: 800; color: var(--color-slate); }
+  .growth__tag--now { color: var(--color-deep-teal); }
+  .growth__bar { height: 44px; border-radius: 4px; }
+  .growth__bar--before { width: 36%; background: #b9c9c7; }
+  .growth__bar--after { width: 100%; background: linear-gradient(90deg, var(--color-deep-teal), var(--color-brand-teal)); }
+  .growth__val { grid-column: 2; margin: 0; font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 88px; line-height: 1; color: var(--color-deep-teal); }
+  .growth__val small { font-family: var(--font-jp); font-size: 36px; font-weight: 800; margin-left: 6px; }
+  .growth__val--before { font-size: 42px; color: var(--color-slate); }
+  .growth__val--before small { font-size: 24px; }
+  .growth__tag small { display: block; font-size: 20px; font-weight: 600; color: var(--color-slate); }
+  .growth__row { margin-bottom: 10px; }
+  .growth__val { font-size: 70px; }
+  .proof-pair { display: flex; align-items: flex-end; gap: 18px; margin-top: 14px; }
+  .proof-pair figure { margin: 0; }
+  .proof-pair img { display: block; height: 104px; border-radius: 6px; box-shadow: 0 6px 18px rgba(14,52,56,.22); }
+  .proof-pair figcaption { margin-top: 4px; font-size: 20px; font-weight: 700; color: var(--color-slate); text-align: center; }
+  .proof-pair__note { margin: 0 0 24px 10px; font-size: 24px; line-height: 1.6; font-weight: 700; color: var(--color-ink); }
+  .proof-pair__note b { color: var(--color-deep-teal); font-weight: 800; }
+  .growth__x { position: absolute; right: 0; top: 0; margin: 0; padding: 10px 22px; border-radius: 8px; background: var(--color-abyss-teal); font-size: 28px; font-weight: 800; color: var(--color-white); }
+  .growth__x b { font-family: "Barlow Semi Condensed", var(--font-en); font-size: 64px; font-weight: 600; color: #8fe3da; margin: 0 4px; }
+
+  /* ---- 写真カード型のステップ(ビジュアル強化) ---- */
+  .step-node--photo {
+    position: relative; overflow: hidden; min-height: 400px; border: none !important;
+    background: var(--img) center / cover no-repeat !important; color: var(--color-white);
+    justify-content: flex-end;
+  }
+  .step-node--photo::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,52,56,.35) 0%, rgba(14,52,56,.55) 40%, rgba(10,38,40,.95) 100%); }
+  .step-node--photo > * { position: relative; }
+  .step-node--photo .step-node__top { position: absolute; top: 24px; left: 32px; right: 32px; }
+  .step-node--photo .step-node__num { color: #8fe3da !important; font-style: italic; }
+  .step-node--photo .step-node__icon { color: #8fe3da; }
+  .step-node--photo .step-node__title { color: var(--color-white) !important; font-size: 34px; }
+  .step-node--photo .step-node__desc { color: var(--color-ivory) !important; }
+
+  /* ---- 右上の斜め写真(ビジュアル強化) ---- */
+  .has-corner { overflow: hidden; }
+  .corner-photo { position: absolute; top: 0; right: 0; width: 680px; height: 236px; clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%); z-index: 0; }
+  .corner-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .corner-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(247,251,250,.9) 0%, rgba(247,251,250,0) 40%); }
+  .has-corner > *:not(.corner-photo) { position: relative; z-index: 1; }
+  .has-corner .deck-footer { position: absolute; }
+  .has-corner .band { position: relative; }
+  .has-corner .slide-h2 { max-width: 1180px; }
+  .has-corner .slide-lead { max-width: 1060px; }
+  /* ---- 価格の箱に写真 ---- */
+  .price--photo { position: relative; overflow: hidden; background: var(--img) center / cover no-repeat !important; }
+  .price--photo::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,38,40,.82) 0%, rgba(10,38,40,.7) 50%, rgba(10,38,40,.92) 100%); }
+  .price--photo > * { position: relative; }
+
+  /* ---- 矢印型プロセス(始めるまでの流れ) ---- */
+  .chev { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 18px; }
+  .chev__step {
+    position: relative; height: 250px; padding: 26px 20px 0 64px; margin-right: -26px;
+    background: var(--c); color: var(--t);
+    clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 50%, calc(100% - 44px) 100%, 0 100%, 44px 50%);
+  }
+  .chev__step:last-child { margin-right: 0; }
+  .chev__step:first-child { padding-left: 34px; clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 50%, calc(100% - 44px) 100%, 0 100%); }
+  .chev__step p { margin: 0; color: var(--t) !important; }
+  .chev__no { font-family: var(--font-en); font-size: 20px; font-weight: 700; letter-spacing: .14em; }
+  .chev__no b { margin-left: 6px; font-family: "Barlow Semi Condensed", var(--font-en); font-size: 54px; font-weight: 600; letter-spacing: 0; }
+  .chev__step .icon-mask { position: absolute; top: 34px; right: 64px; width: 40px; height: 40px; color: var(--t); opacity: .85; }
+  .chev__title { margin-top: 14px !important; font-size: 32px; font-weight: 900; }
+  .chev__desc { margin-top: 8px !important; font-size: 22px; font-weight: 700; line-height: 1.45; }
+
+  /* ---- 05 実績ダッシュボード ---- */
+  .kb { display: grid; grid-template-columns: 1.55fr 1fr; gap: 32px; margin-top: 8px; }
+  .kb__chart { position: relative; background: var(--color-abyss-teal); border-radius: 8px; padding: 20px 36px 14px; color: var(--color-white); }
+  .kb__chart p { color: var(--color-ivory); }
+  .kb__head { display: flex; justify-content: space-between; align-items: flex-start; }
+  .kb__title { margin: 0; font-size: 26px; font-weight: 800; letter-spacing: .06em; }
+  .kb__x { margin: 0; text-align: right; }
+  .kb__x span { display: block; font-size: 22px; font-weight: 700; color: #8fe3da !important; }
+  .kb__x b { font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 84px; line-height: .95; color: var(--color-white); }
+  .kb__plot { position: relative; display: grid; grid-template-columns: 210px 210px 1fr; column-gap: 44px; align-items: end; height: 250px; margin-top: -18px; border-bottom: 2px solid rgba(255,255,255,.35); }
+  .kb__col { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .kb__bar { width: 150px; border-radius: 4px 4px 0 0; }
+  .kb__bar--before { height: 68px; background: rgba(255,255,255,.28); }
+  .kb__bar--after { height: 182px; background: linear-gradient(180deg, #8fe3da, var(--color-brand-teal)); }
+  .kb__val { margin: 0 0 10px; font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 40px; line-height: 1; color: var(--color-white) !important; white-space: nowrap; }
+  .kb__val small { font-family: var(--font-jp); font-size: 20px; margin-left: 2px; }
+  .kb__val--muted { color: var(--color-ivory) !important; opacity: .8; font-size: 34px; }
+  .kb__lab { position: absolute; bottom: -62px; margin: 0; width: 210px; text-align: center; font-size: 22px; font-weight: 800; }
+  .kb__col { position: relative; }
+  .kb__lab small { display: block; font-size: 20px; font-weight: 600; opacity: .8; }
+  .kb__lab--now { color: #8fe3da !important; }
+  .kb__notes { align-self: center; margin: 0; padding: 0; list-style: none; }
+  .kb__notes li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .kb__notes span { display: block; font-size: 20px; font-weight: 600; color: var(--color-ivory); opacity: .85; }
+  .kb__notes b { font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 38px; color: var(--color-white); }
+  .kb__src { margin: 66px 0 0; font-size: 20px; opacity: .7; text-align: right; }
+  .kb__tiles { display: grid; grid-template-rows: repeat(3, 1fr); gap: 14px; }
+  .kb__tile { border-radius: 8px; background: var(--color-white); border-left: 6px solid var(--color-brand-teal); padding: 12px 26px; display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; align-items: end; column-gap: 18px; }
+  .kb__k { grid-column: 1 / 3; margin: 0; font-size: 22px; font-weight: 800; color: var(--color-slate); }
+  .kb__n { margin: 0; font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 66px; line-height: 1; color: var(--color-deep-teal); white-space: nowrap; }
+  .kb__n small { font-family: var(--font-jp); font-size: 28px; font-weight: 800; margin-left: 4px; }
+  .kb__s { margin: 0 0 6px; font-size: 20px; font-weight: 700; line-height: 1.4; color: var(--color-ink); text-align: right; }
+  .kb__s b { color: var(--color-deep-teal); font-size: 26px; }
+
+  /* ---- 05 実績(AI生成の写真を全面に) ---- */
+  deck-stage .slide-paper.resx { background: var(--color-abyss-deep) !important; overflow: hidden; }
+  .resx::before { content: ""; position: absolute; inset: 0; background: url("./assets/photo/gen/results-bg.jpg") center / cover no-repeat, var(--color-abyss-deep); }
+  .resx::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,32,34,.92) 0%, rgba(8,32,34,.7) 55%, rgba(8,32,34,.35) 100%); }
+  .resx > *:not(.deck-footer) { position: relative; z-index: 1; }
+  .resx .deck-footer { z-index: 1; }
+  .resx .deck-header__title, .resx .deck-footer, .resx .deck-footer span { color: var(--color-ivory) !important; }
+  .resx__h2 { color: var(--color-white) !important; }
+  .resx__h2 .accent { color: #8fe3da !important; }
+  .resx__lead { color: var(--color-ivory) !important; }
+  .resx__lead b { color: #8fe3da; }
+  .resx__grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 48px; margin-top: 60px; }
+  .resx__cap { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: .1em; color: #8fe3da; }
+  .resx__x { margin: 0; font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 230px; line-height: .95; color: var(--color-white); }
+  .resx__cmp { display: flex; align-items: center; gap: 28px; margin-top: 10px; }
+  .resx__cmp span { display: block; font-size: 20px; font-weight: 700; color: var(--color-ivory); }
+  .resx__cmp b { font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 60px; line-height: 1.05; color: var(--color-white); white-space: nowrap; }
+  .resx__cmp b small { font-family: var(--font-jp); font-size: 24px; margin-left: 4px; }
+  .resx__cmp b.resx__before { font-size: 42px; color: var(--color-ivory); opacity: .8; }
+  .resx__arrow { width: 54px; height: 3px; background: #8fe3da; position: relative; margin-top: 22px; }
+  .resx__arrow::after { content: ""; position: absolute; right: -2px; top: -7px; border-left: 14px solid #8fe3da; border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
+  .resx small { color: inherit !important; opacity: .9; }
+  .resx__src { margin: 22px 0 0; font-size: 20px; color: var(--color-ivory); opacity: .85; }
+  .resx__tiles { display: grid; gap: 16px; align-content: center; }
+  .resx__tile { padding: 18px 28px; border-radius: 8px; background: rgba(8,32,34,.55); border: 1px solid rgba(143,227,218,.45); }
+  .resx__tile span { display: block; font-size: 22px; font-weight: 700; color: var(--color-ivory); }
+  .resx__tile b { font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 64px; line-height: 1.05; color: var(--color-white); }
+  .resx__tile b small { font-family: var(--font-jp); font-size: 26px; margin-left: 4px; }
+  .resx__tile em { margin-left: 16px; font-style: normal; font-size: 20px; font-weight: 700; color: #8fe3da; }
+
+  /* ---- Canva(ラクプレ)学習の反映 ---- */
+  /* 比較表: 自社列を濃いティールで浮かせる(compare-zu p3) */
+  .compare__row .c-us { background: var(--color-abyss-teal) !important; color: var(--color-white) !important; }
+  .compare__row:last-child .c-us { border-radius: 0 0 8px 8px; }
+  .compare__head .c-us { background: var(--color-abyss-teal) !important; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .compare__row { border-bottom-color: var(--color-hairline); }
+  .compare__row .c-us { border-bottom: 1px solid rgba(255,255,255,.15); }
+  .mk { display: inline-block; width: 40px; font-style: normal; font-weight: 900; color: #8fe3da; }
+  .mk--them { color: var(--color-slate); opacity: .7; }
+  /* 選択肢の3枚はつなぎ線なし */
+  .step-flow--options { grid-template-columns: 1fr 1fr 1fr; column-gap: 32px; }
+  /* 流れ: 社長様の出番だけ濃く(step p2) */
+  .chev__step--hi { height: 290px; margin-top: -20px; }
+  .chev__badge { position: absolute; top: -2px; left: 64px; padding: 4px 12px; border-radius: 0 0 6px 6px; background: #8fe3da; color: var(--color-abyss-deep) !important; font-size: 20px; font-weight: 800; }
+  .chev__step--hi .chev__no { margin-top: 26px !important; }
+  /* 01: 3本柱 → ⌄⌄⌄ → 結論帯(bullets-1 p4) */
+  .req__down { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; height: 30px; margin-top: 2px; }
+  .req__down i { display: block; width: 22px; height: 22px; margin-top: -12px; border-right: 4px solid var(--color-brand-teal); border-bottom: 4px solid var(--color-brand-teal); transform: rotate(45deg); opacity: .9; }
+  .req__down i:first-child { margin-top: -6px; opacity: .45; }
+  .req__down i:nth-child(2) { opacity: .7; }
+  .req__band { margin-top: 10px !important; }
+  /* 代表紹介: 大きな丸写真を左にはみ出させる(seminar-deck p5) */
+  .profile-grid { grid-template-columns: 430px 1fr !important; }
+  .profile-photo { width: 520px; height: 520px !important; margin-left: -150px; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 60% 40%, #bfeae5, var(--color-mist-teal)); align-items: flex-end; }
+  .profile-photo::before { display: none; }
+  .profile-photo::after { content: ""; position: absolute; inset: -18px; border: 3px solid rgba(78,205,196,.45); border-radius: 50%; }
+  .profile-photo img { max-height: 108% !important; }
+
+  .resx__big { margin: 6px 0 0; font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 168px; line-height: 1; letter-spacing: -.01em; color: var(--color-white); white-space: nowrap; text-shadow: 0 0 40px rgba(78,205,196,.35); }
+  .resx__big small { font-family: var(--font-jp); font-size: 56px; font-weight: 800; margin-left: 8px; color: #8fe3da !important; opacity: 1; }
+  .resx__vs { display: flex; align-items: center; gap: 30px; margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(143,227,218,.35); }
+  .resx__prev { margin: 0; font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 46px; line-height: 1.05; color: var(--color-ivory) !important; opacity: .85; white-space: nowrap; }
+  .resx__prev span, .resx__times span { display: block; font-family: var(--font-jp); font-size: 20px; font-weight: 700; color: var(--color-ivory); }
+  .resx__prev small { font-family: var(--font-jp); font-size: 20px; margin-left: 4px; }
+  .resx__times { margin: 0; }
+  .resx__times b { font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 72px; line-height: 1; color: #8fe3da; }
+
+  .logo-grid--all { grid-template-columns: repeat(6, 1fr) !important; }
+  .logo-grid--all .logo-cell { height: 170px; padding: 26px 22px; flex-direction: column; border-right: 1px solid var(--color-hairline); }
+  .logo-grid--all .logo-cell:nth-child(4n) { border-right: 1px solid var(--color-hairline); }
+  .logo-grid--all .logo-cell:nth-child(6n) { border-right: none; }
+  .logo-grid--all .logo-cell img { max-height: 70px; max-width: 100%; }
+  .logo-grid--all .logo-cell small { margin-top: 6px; font-size: 20px; font-weight: 700; color: var(--color-slate); }
+
+  /* ---- 体制図 ---- */
+  .org { display: grid; justify-items: center; margin-top: 10px; }
+  .org__top, .org__pm, .org__box { text-align: center; border-radius: 8px; }
+  .org__top { width: 520px; padding: 18px; background: var(--color-mist-teal); border: 2px solid var(--color-brand-teal); }
+  .org__pm { width: 620px; padding: 18px; background: var(--color-white); border: 2px solid var(--color-deep-teal); }
+  .org__line--v { width: 2px; height: 34px; background: var(--color-brand-teal); }
+  .org__branch { position: relative; width: 860px; height: 44px; }
+  .org__branch::before { content: ""; position: absolute; left: 50%; top: 0; width: 2px; height: 22px; background: var(--color-brand-teal); }
+  .org__branch::after { content: ""; position: absolute; left: 0; right: 0; top: 22px; height: 2px; background: var(--color-brand-teal); }
+  .org__branch i { position: absolute; top: 22px; width: 2px; height: 22px; background: var(--color-brand-teal); }
+  .org__branch i:first-child { left: 0; } .org__branch i:last-child { right: 0; }
+  .org__row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; width: 1300px; }
+  .org__box { padding: 24px; background: var(--color-white); border: 2px solid #b9d8d4; }
+  .org__box--us { background: var(--color-abyss-teal); border-color: var(--color-abyss-teal); display: flex; align-items: center; gap: 26px; text-align: left; }
+  .org__logo { width: 130px; height: 150px; object-fit: contain; flex: none; }
+  .org__box--us p { color: var(--color-white) !important; }
+  .org__box--us .org__role { color: #8fe3da !important; }
+  .org__role { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: .06em; color: var(--color-deep-teal); }
+  .org__name { margin: 6px 0 0; font-size: 40px; font-weight: 900; color: var(--color-ink); }
+  .org__desc { margin: 6px 0 0; font-size: 24px; font-weight: 600; color: var(--color-slate); }
+
+  /* ---- 料金シミュレーション: 本数比較 ---- */
+  .sim { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 14px; }
+  .sim__col { background: var(--color-white); border-radius: 8px; border-top: 6px solid var(--color-brand-teal); padding: 22px 30px 20px; }
+  .sim__budget { margin: 0 0 10px; font-size: 28px; font-weight: 800; color: var(--color-ink); }
+  .sim__budget b { font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 60px; color: var(--color-deep-teal); margin: 0 4px; }
+  .sim__row { display: grid; grid-template-columns: 170px 1fr 92px; align-items: center; column-gap: 16px; padding: 14px 0; border-top: 1px solid var(--color-hairline); }
+  .sim__who { margin: 0; font-size: 21px; font-weight: 800; line-height: 1.35; color: var(--color-slate); }
+  .sim__row--us .sim__who { color: var(--color-deep-teal); }
+  .sim__who span { font-size: 20px; color: var(--color-ink); }
+  .sim__tiles { display: grid; grid-template-columns: repeat(9, 1fr); gap: 6px; }
+  .t { display: block; aspect-ratio: 9 / 16; border-radius: 3px; background: linear-gradient(180deg, var(--color-brand-teal), var(--color-deep-teal)); }
+  .t--them { background: #c4d1cf; }
+  .sim__n { margin: 0; text-align: right; font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 64px; line-height: 1; color: var(--color-deep-teal); }
+  .sim__n small { font-family: var(--font-jp); font-size: 22px; font-weight: 800; margin-left: 2px; }
+  .sim__n--them { color: var(--color-slate); }
+  .sim__price { margin: 10px 0 0; text-align: right; font-size: 28px; font-weight: 800; color: var(--color-ink); }
+  .sim__price span { margin-left: 14px; padding: 4px 14px; border-radius: 6px; background: var(--color-abyss-teal); color: #8fe3da; font-family: "Barlow Semi Condensed", var(--font-en); font-size: 30px; }
+  /* ---- 料金シミュレーション: 式 ---- */
+  .formula { display: grid; grid-template-columns: 1fr 60px 1fr 60px 1.05fr; align-items: stretch; margin-top: 18px; }
+  .formula__op { margin: 0; align-self: center; text-align: center; font-size: 64px; font-weight: 900; color: var(--color-brand-teal); }
+  .formula__box { background: var(--color-white); border-radius: 8px; border: 2px solid var(--color-hairline); padding: 22px 26px; }
+  .formula__box--base { border-color: var(--color-brand-teal); }
+  .formula__box--sum { background: var(--color-abyss-teal); border-color: var(--color-abyss-teal); }
+  .formula__box--sum p, .formula__box--sum td { color: var(--color-white) !important; }
+  .formula__k { margin: 0; font-size: 24px; font-weight: 800; color: var(--color-deep-teal); }
+  .formula__box--sum .formula__k { color: #8fe3da !important; }
+  .formula__v { margin: 6px 0 10px; font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 72px; line-height: 1; color: var(--color-ink); }
+  .formula__v small { font-family: var(--font-jp); font-size: 26px; margin-left: 4px; }
+  .formula__box ul { margin: 0; padding: 0; list-style: none; }
+  .formula__box li { padding: 8px 0; border-top: 1px solid var(--color-hairline); font-size: 22px; font-weight: 700; color: var(--color-ink); }
+  .formula__box li small { display: block; font-size: 20px; font-weight: 600; color: var(--color-slate); }
+  .formula__unit { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--color-hairline); }
+  .formula__unit span { font-size: 26px; font-weight: 800; color: var(--color-ink); }
+  .formula__unit span small { display: block; font-size: 20px; font-weight: 600; color: var(--color-slate); }
+  .formula__unit b { font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 52px; color: var(--color-deep-teal); }
+  .formula__unit b small { font-family: var(--font-jp); font-size: 20px; margin-left: 4px; color: var(--color-ink); }
+  .formula__note { margin: 12px 0 0; font-size: 20px; font-weight: 700; color: var(--color-slate); }
+  .formula__box--sum .formula__note { color: var(--color-ivory) !important; }
+  .quick { width: 100%; margin-top: 8px; border-collapse: collapse; }
+  .quick td { padding: 7px 4px; border-bottom: 1px solid rgba(255,255,255,.18); font-size: 26px; font-weight: 700; }
+  .quick td:last-child { text-align: right; font-family: "Barlow Semi Condensed", var(--font-en); font-weight: 600; font-size: 34px; }
+  .quick tr.is-hi td { color: #8fe3da !important; }
+
+  .c-us--brand { display: flex; align-items: center; gap: 14px; }
+  .c-us--brand img { width: 46px; height: 54px; object-fit: contain; }
+
+  .apply-list li b { color: var(--color-deep-teal); font-weight: 800; }
+
+  .includes--tight li { padding: 10px 0; }
+  .includes--tight .includes__title { font-size: 26px; }
+  .apply-title { margin-top: 18px !important; }
+  .apply-list li { padding: 3px 0 3px 26px !important; font-size: 24px !important; }
+
+  /* ---- 動画以外もワンストップ ---- */
+  .onestop { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; margin-top: 14px; }
+  .onestop__work { display: block; border-radius: 8px; overflow: hidden; background: var(--color-white); border: 1px solid var(--color-hairline); text-decoration: none; }
+  .onestop__work img { display: block; width: 100%; height: 400px; object-fit: cover; object-position: top; }
+  .onestop__cap { padding: 16px 24px 18px; }
+  .onestop__cap p { margin: 0; }
+  .onestop__tag { display: inline-block; padding: 2px 12px; border-radius: 4px; background: var(--color-abyss-teal); color: #8fe3da !important; font-size: 20px; font-weight: 800; }
+  .onestop__title { margin-top: 8px !important; font-size: 30px; font-weight: 900; color: var(--color-ink); }
+  .onestop__url { margin-top: 4px !important; font-family: var(--font-en); font-size: 22px; font-weight: 600; color: var(--color-deep-teal); }
+  .onestop__list { margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--color-ink); }
+  .onestop__list li { display: grid; grid-template-columns: 60px 1fr; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--color-hairline); }
+  .onestop__list .icon-mask { width: 40px; height: 40px; color: var(--color-brand-teal); }
+  .onestop__list b { display: block; font-size: 30px; font-weight: 900; color: var(--color-ink); }
+  .onestop__list span { font-size: 22px; font-weight: 600; color: var(--color-slate); }
+
+  /* ---- 料金ページ共通(左:価格 / 右:含まれるもの) ---- */
+  .offer-grid { display: grid; grid-template-columns: 560px 1fr; gap: 72px; margin-top: 8px; }
+  .price {
+    padding: 36px 40px;
+    background: var(--color-abyss-teal);
+    border-radius: 8px;
+    color: var(--color-ivory);
+  }
+  .price p { color: var(--color-ivory); }
+  .price__name { margin: 0; font-size: 30px; font-weight: 800; letter-spacing: 0.06em; color: var(--color-white) !important; }
+  .price__num small { color: var(--color-white); }
+  .price__num { margin: 18px 0 0; font-size: 150px; line-height: 1; color: var(--color-white); }
+  .price__num small { font-size: 52px; margin-left: 6px; }
+  .price__tax { margin: 8px 0 0; font-size: 24px; color: var(--color-ivory); }
+  .price__note {
+    margin: 28px 0 0;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 26px;
+    line-height: 1.6;
+    font-weight: 600;
+  }
+  .includes { margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--color-ink); }
+  .includes li {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    column-gap: 16px;
+    align-items: start;
+    padding: 17px 0;
+    border-bottom: 1px solid var(--color-hairline);
+  }
+  .includes__icon { color: var(--color-brand-teal); line-height: 0; padding-top: 4px; }
+  .includes__icon .icon-mask { width: 32px; height: 32px; }
+  .includes__title { margin: 0; font-size: 29px; font-weight: 800; color: var(--color-ink); }
+  .includes__desc { margin: 2px 0 0; font-size: 24px; line-height: 1.5; color: var(--color-slate); }
+  .offer-foot { margin: 14px 0 0; font-size: 22px; color: var(--color-slate); }
+  .apply-title { margin: 30px 0 8px; font-size: 28px; font-weight: 800; color: var(--color-deep-teal); }
+  .apply-list { margin: 0; padding: 0; list-style: none; }
+  .apply-list li {
+    position: relative;
+    padding: 6px 0 6px 26px;
+    font-size: 26px;
+    line-height: 1.55;
+    color: var(--color-ink);
+  }
+  .apply-list li::before {
+    content: "";
+    position: absolute;
+    left: 2px; top: 20px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--color-brand-teal);
+  }
+
+  /* ---- s12 比較表 ---- */
+  .compare { margin-top: 10px; }
+  .compare__head,
+  .compare__row {
+    display: grid;
+    grid-template-columns: 260px 1fr 1.15fr;
+    column-gap: 0;
+  }
+  .compare__head p,
+  .compare__row p { margin: 0; padding: 18px 28px; }
+  .compare__head { border-bottom: 2px solid var(--color-ink); }
+  .compare__head p { font-size: 28px; font-weight: 800; }
+  .compare__head .c-them { color: var(--color-slate); }
+  .compare__head .c-us { color: var(--color-white); background: var(--color-deep-teal); border-radius: 8px 8px 0 0; }
+  .compare__row { border-bottom: 1px solid var(--color-hairline); }
+  .compare__row .c-label { font-size: 26px; font-weight: 700; color: var(--color-slate); padding-left: 0; }
+  .compare__row .c-them { font-size: 27px; color: var(--color-slate); }
+  .compare__row .c-us { font-size: 29px; font-weight: 800; color: var(--color-ink); background: var(--color-mist-teal); }
+
+  /* ---- s13 月額プラン(3列表) ---- */
+  .plans {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 32px;
+    margin-top: 16px;
+    align-items: stretch;
+  }
+  .plan {
+    border-top: 2px solid var(--color-ink);
+    padding: 22px 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .plan--rec { border-top: 6px solid var(--color-brand-teal); background: var(--color-mist-teal); padding: 18px 28px 22px; border-radius: 0 0 8px 8px; }
+  .plan__tag {
+    align-self: flex-start;
+    margin: 0 0 10px;
+    padding: 4px 16px;
+    background: var(--color-deep-teal);
+    color: var(--color-white);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    border-radius: 4px;
+  }
+  .plan__name { margin: 0; font-size: 32px; font-weight: 800; color: var(--color-ink); }
+  .plan__price { margin: 10px 0 4px; font-size: 80px; line-height: 1; color: var(--color-deep-teal); }
+  .plan__price small { font-size: 32px; margin-left: 4px; color: var(--color-ink); }
+  .plan ul { margin: 14px 0 0; padding: 0; list-style: none; }
+  .plan li {
+    position: relative;
+    padding: 9px 0 9px 26px;
+    border-top: 1px solid var(--color-hairline);
+    font-size: 26px;
+    line-height: 1.45;
+    color: var(--color-ink);
+  }
+  .plan li::before {
+    content: "";
+    position: absolute;
+    left: 2px; top: 22px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--color-brand-teal);
+  }
+
+  /* ---- s14 体制 + 始めるまでの流れ ---- */
+  .roles { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 6px; border-top: 2px solid var(--color-ink); }
+  .role { padding: 22px 32px 22px 0; }
+  .role + .role { border-left: 1px solid var(--color-hairline); padding-left: 36px; }
+  .role__who { margin: 0; font-size: 31px; font-weight: 800; color: var(--color-deep-teal); }
+  .role__what { margin: 8px 0 0; font-size: 26px; line-height: 1.55; color: var(--color-ink); }
+  .flow-title { margin: 30px 0 0; font-size: 30px; font-weight: 800; color: var(--color-ink); }
+  .flow {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 18px;
+  }
+  .flow::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 13px;
+    height: 2px;
+    background: rgba(78, 205, 196, 0.55);
+  }
+  .flow-step { position: relative; padding-top: 44px; padding-right: 20px; }
+  .flow-step::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 4px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--color-brand-teal);
+  }
+  .flow-day { margin: 0; font-size: 34px; color: var(--color-deep-teal); line-height: 1; }
+  .flow-what { margin: 8px 0 0; font-size: 26px; font-weight: 800; line-height: 1.45; color: var(--color-ink); }
+
+  /* ---- s15 締め ---- */
+  .closing { justify-content: center; text-align: center; }
+  .closing__lead { margin: 0; font-size: 30px; font-weight: 700; color: var(--color-ink); }
+  .closing__main { margin: 18px 0 0; font-size: 64px; font-weight: 800; line-height: 1.35; color: var(--color-ink); }
+  .closing__main em { font-style: normal; color: var(--color-deep-teal); }
+  .closing__rule { width: 120px; height: 2px; background: var(--color-brand-teal); margin: 48px auto; }
+  .closing__contact { margin: 0; font-size: 28px; line-height: 1.8; color: var(--color-ink); }
+  .closing__contact b { font-weight: 800; }
+</style>
+</head>
+<body>
+
+<deck-stage>
+
+<!-- ============================================================
+     表紙
+     ============================================================ -->
+<section id="s01" class="pcover">
+  <div class="pcover__bg"></div>
+  <div class="pcover__shade"></div>
+  <div class="pcover__body">
+    <p class="pcover__eyebrow">COMPANY PROFILE &amp; PROPOSAL<span>2026</span></p>
+    <p class="pcover__to">KENRO様</p>
+    <h1 class="pcover__title">会社概要と<br>SNS×AI 発信支援の<br>ご提案</h1>
+    <p class="pcover__hand">言葉の力を、もっと遠くへ。</p>
+  </div>
+  <div class="pcover__foot">
+    <img src="./_design-system/assets/logo.png" alt="HARUKA FILM" />
+    <p><b>株式会社HARUKA FILM</b><span>代表取締役　髙橋 聖</span></p>
+  </div>
+</section>
+
+<!-- ============================================================
+     01 / ご要望の整理
+     ============================================================ -->
+<section id="s02" class="slide-paper req">
+  <div class="req__hero"><img src="./assets/photo/gen/hero-ceo.jpg" alt="" /></div>
+  <p class="req__hand">想いを、<br>社会を動かす力に。</p>
+  <div class="deck-header">
+    <span class="deck-header__pg">01</span>
+    <span class="deck-header__title">ご要望の整理</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2 req__h2">3つのご要望を、<br><span class="accent">1つのストーリーで実現します。</span></h2>
+  <p class="slide-lead req__lead">社長様が実現したい未来に向けて、3つのご要望を別々ではなく<br>一つの戦略でつなぎ、相乗効果を生み出します。</p>
+
+  <div class="req__cards">
+    <article class="req-card" style="--img:url('./assets/photo/gen/card-awareness.jpg')">
+      <p class="req-card__no">01<span>BRAND AWARENESS</span></p>
+      <h3 class="req-card__title">認知を広げたい</h3>
+      <p class="req-card__sub">社長様の名前と顔を、<br>狙った人たちに知ってもらう</p>
+      <ul class="req-card__items">
+        <li><i class="icon-mask icon--idea"></i>ストーリー設計</li>
+        <li><i class="icon-mask icon--camera"></i>AI×実写の動画</li>
+        <li><i class="icon-mask icon--megaphone"></i>4媒体へ展開</li>
+      </ul>
+    </article>
+    <article class="req-card" style="--img:url('./assets/photo/gen/card-follower.jpg')">
+      <p class="req-card__no">02<span>FOLLOWER GROWTH</span></p>
+      <h3 class="req-card__title">フォロワーを増やしたい</h3>
+      <p class="req-card__sub">数ではなく、<br>仕事につながる人の密度を上げる</p>
+      <ul class="req-card__items">
+        <li><i class="icon-mask icon--target"></i>ターゲット設計</li>
+        <li><i class="icon-mask icon--draft"></i>継続的な発信</li>
+        <li><i class="icon-mask icon--growth"></i>保存・DMの向上</li>
+      </ul>
+    </article>
+    <article class="req-card" style="--img:url('./assets/photo/gen/card-construction.jpg')">
+      <p class="req-card__no">03<span>AI FOR CONSTRUCTION</span></p>
+      <h3 class="req-card__title">建設業界にAIを広めたい</h3>
+      <p class="req-card__sub">現場で動いているAIを見せ、<br>社長様のシステムも一緒に育てる</p>
+      <ul class="req-card__items">
+        <li><i class="icon-mask icon--gear"></i>AI活用の実例</li>
+        <li><i class="icon-mask icon--screen"></i>建設分野の実績</li>
+        <li><i class="icon-mask icon--team"></i>システムの商品化</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="req__down" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="req__band" style="--img:url('./assets/photo/gen/band-city.jpg')">
+    <p class="req__band-label">OUR APPROACH</p>
+    <p class="req__band-text">3つを別々に進めるのではなく、<br><em>1本の線でつなぐ</em>ことが、この提案の中心です。</p>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">01 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     03 / 柱① 認知の獲得
+     ============================================================ -->
+<section id="s04" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">02</span>
+    <span class="deck-header__title">柱① 認知を取りにいく</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">社長様の本音を、<span class="accent">文字から動画へ。4つの場所へ同時に。</span></h2>
+  <p class="slide-lead">1回の撮影から、たくさんの動画を生み出します。撮影のない週は、AI生成動画で発信を止めません。</p>
+
+  <div class="step-flow">
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/card-awareness.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">01</span>
+        <span class="step-node__icon"><i class="icon-mask icon--camera"></i></span>
+      </div>
+      <h3 class="step-node__title">撮影は1回だけ</h3>
+      <p class="step-node__desc">社長様の事務所や現場で、半日のインタビュー。社長様は話すだけです。</p>
+    </div>
+    <div class="step-conn"></div>
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/s-edit.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">02</span>
+        <span class="step-node__icon"><i class="icon-mask icon--screen"></i></span>
+      </div>
+      <h3 class="step-node__title">AIで何本にも切り出す</h3>
+      <p class="step-node__desc">当たった「本音」の型で切り出す。AI生成のオリジナル動画も足せます。</p>
+    </div>
+    <div class="step-conn"></div>
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/s-multi.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">03</span>
+        <span class="step-node__icon"><i class="icon-mask icon--megaphone"></i></span>
+      </div>
+      <h3 class="step-node__title">4つの場所へ同時に</h3>
+      <p class="step-node__desc">Threads・Instagram・TikTok・YouTube。媒体ごとに投稿文を書き分けます。</p>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="band__icon"><i class="icon-mask icon--mic"></i></div>
+    <p>1回の撮影が、<em>1ヶ月分の発信</em>になります。</p>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">02 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     04 / 柱② 濃いフォロワー
+     ============================================================ -->
+<section id="s05" class="slide-paper has-corner">
+  <div class="corner-photo"><img src="./assets/photo/gen/card-follower.jpg" alt="" /></div>
+  <div class="deck-header">
+    <span class="deck-header__pg">03</span>
+    <span class="deck-header__title">柱② “濃い”フォロワーを増やす</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">増やすのは数ではなく、<br><span class="accent">仕事につながる人の密度</span>です。</h2>
+  <p class="slide-lead">フォロワーが1万人いても、お客様がいなければ意味がありません。SNSコンサルとして、最も得意な領域です。</p>
+
+  <div class="vs">
+    <div class="vs__head">
+      <span></span>
+      <p class="vs__weak">数を追う運用</p>
+      <p class="vs__strong">密度を上げる運用（私たちのやり方）</p>
+    </div>
+    <div class="vs__row">
+      <p class="vs__label">誰に届けるか</p>
+      <p class="vs__weak">とにかく多くの人に</p>
+      <p class="vs__strong">経営者・建設業界の人に絞る</p>
+    </div>
+    <div class="vs__row">
+      <p class="vs__label">見る数字</p>
+      <p class="vs__weak">フォロワー数・再生数</p>
+      <p class="vs__strong">保存・DM・プロフィールを見た人の数</p>
+    </div>
+    <div class="vs__row">
+      <p class="vs__label">その先</p>
+      <p class="vs__weak">見られて終わり</p>
+      <p class="vs__strong">LINEにつなぎ、関係を続ける</p>
+    </div>
+    <div class="vs__row">
+      <p class="vs__label">結果</p>
+      <p class="vs__weak">バズっても売上は動かない</p>
+      <p class="vs__strong">相談・問い合わせが生まれる</p>
+    </div>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">03 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     05 / 柱③ 建設業界のAI — 現場で動いているシステム
+     ============================================================ -->
+<section id="s06" class="slide-paper has-corner">
+  <div class="corner-photo"><img src="./assets/photo/gen/c-construction-ai.jpg" alt="" /></div>
+  <div class="deck-header">
+    <span class="deck-header__pg">04</span>
+    <span class="deck-header__title">建設分野での実績 — AI・システム開発</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">建設分野で、<br><span class="accent">AIとシステムを形にしてきました。</span></h2>
+  <p class="slide-lead">施工管理技士の資格対策スクール様向けに、私たちが開発し、現在も運用しているシステムの一部です。</p>
+
+  <div class="sys-grid">
+    <div class="sys">
+      <span class="sys__icon"><i class="icon-mask icon--draft"></i></span>
+      <div>
+        <p class="sys__title">模擬試験の自動作成</p>
+        <p class="sys__desc">問題データから、問題冊子と解答解説のWordを自動で作り、全問を照合</p>
+      </div>
+    </div>
+    <div class="sys">
+      <span class="sys__icon"><i class="icon-mask icon--loupe"></i></span>
+      <div>
+        <p class="sys__title">法改正のチェック</p>
+        <p class="sys__desc">建設業法の改正に合わせて、直すべき問題を自動で洗い出す</p>
+      </div>
+    </div>
+    <div class="sys">
+      <span class="sys__icon"><i class="icon-mask icon--sprout"></i></span>
+      <div>
+        <p class="sys__title">試験対策の学習アプリ</p>
+        <p class="sys__desc">先生が一緒に勉強してくれる体験を、スマホのアプリに</p>
+      </div>
+    </div>
+    <div class="sys">
+      <span class="sys__icon"><i class="icon-mask icon--bag"></i></span>
+      <div>
+        <p class="sys__title">自社ECサイト・会員サイト</p>
+        <p class="sys__desc">教材の販売から動画の見放題まで。領収書も自動で発行</p>
+      </div>
+    </div>
+    <div class="sys">
+      <span class="sys__icon"><i class="icon-mask icon--target"></i></span>
+      <div>
+        <p class="sys__title">広告の自動設定と計測</p>
+        <p class="sys__desc">誰がどの動画から来て、何を買ったかまで追いかける</p>
+      </div>
+    </div>
+    <div class="sys">
+      <span class="sys__icon"><i class="icon-mask icon--chat"></i></span>
+      <div>
+        <p class="sys__title">LINE配信の運用</p>
+        <p class="sys__desc">試験日に合わせた配信を、予約から確認まで代行</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="band__icon"><i class="icon-mask icon--gear"></i></div>
+    <p>建設業界のAI活用を、<em>構想ではなく実装で</em>支えています。</p>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">04 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     06 / 事例の成果
+     ============================================================ -->
+<section id="s07" class="slide-paper resx">
+  <div class="deck-header">
+    <span class="deck-header__pg">05</span>
+    <span class="deck-header__title">建設分野での実績 — 施工管理技士の資格対策スクール様</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2 resx__h2">伴走を続けた結果、<br><span class="accent">今年は10ヶ月で、昨年1年分の約2.7倍。</span></h2>
+  <p class="slide-lead resx__lead">施工管理技士という<b>ニッチな資格の分野</b>での成果です。</p>
+
+  <div class="resx__grid">
+    <div class="resx__main">
+      <p class="resx__cap">2026年の売上（1月〜10月26日／BASE）</p>
+      <p class="resx__big">187,069,000<small>円</small></p>
+      <div class="resx__vs">
+        <p class="resx__prev"><span>2025年 1〜12月</span>69,785,000<small>円</small></p>
+        <i class="resx__arrow"></i>
+        <p class="resx__times"><span>10ヶ月で昨年1年分の</span><b>×2.7</b></p>
+      </div>
+      <p class="resx__src">前年同期比 +205%／単月最高 73,434,500円（2026年9月）／直近12ヶ月 192,899,000円<br>出典：BASE管理画面（2026年10月26日時点）</p>
+    </div>
+    <div class="resx__tiles">
+      <div class="resx__tile"><span>YouTube登録者</span><b>64,089<small>人</small></b><em>支援開始時の約41倍</em></div>
+      <div class="resx__tile"><span>直近28日間の視聴回数</span><b>108.8<small>万回</small></b><em>今も伸び続けている</em></div>
+      <div class="resx__tile"><span>広告のROAS（最高）</span><b>1,316<small>%</small></b><em>2026年9月</em></div>
+    </div>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">05 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     07 / SNS運用の実績とお客様の声
+     ============================================================ -->
+<section id="s07b" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">06</span>
+    <span class="deck-header__title">AI生成動画の制作実績</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">撮影なしで、<span class="accent">AIで作った広告動画</span>が配信されています。</h2>
+  <p class="slide-lead">人物・背景・ナレーションまでAIで生成し、私たちが構成と編集で仕上げたショート動画です（クリックで再生）。</p>
+
+  <div class="ai-videos">
+    <figure class="ai-video"><video src="./assets/video/ai1.mp4" poster="./assets/video/ai1.jpg" muted loop playsinline controls preload="metadata"></video><figcaption>AIキャラクターの広告</figcaption></figure>
+    <figure class="ai-video"><video src="./assets/video/ai2.mp4" poster="./assets/video/ai2.jpg" muted loop playsinline controls preload="metadata"></video><figcaption>AI人物のドラマ仕立て</figcaption></figure>
+    <figure class="ai-video"><video src="./assets/video/ai3.mp4" poster="./assets/video/ai3.jpg" muted loop playsinline controls preload="metadata"></video><figcaption>AI人物の悩み共感型</figcaption></figure>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">06 / 21</span></div>
+</section>
+
+<section id="s07c" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">07</span>
+    <span class="deck-header__title">ショート動画の制作実績 — ビジネス・建設</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">ビジネス・建設の分野でも、<span class="accent">伝わるショート動画</span>を。</h2>
+  <p class="slide-lead">経営者や専門家の言葉を、30〜60秒で届く形に仕上げています（クリックで再生）。</p>
+
+  <div class="ai-videos">
+    <figure class="ai-video"><video src="./assets/video/sv1.mp4" poster="./assets/video/sv1.jpg" muted loop playsinline controls preload="metadata"></video><figcaption>建設：資格試験の販促動画</figcaption></figure>
+    <figure class="ai-video"><video src="./assets/video/sv2.mp4" poster="./assets/video/sv2.jpg" muted loop playsinline controls preload="metadata"></video><figcaption>ビジネス：働き方を語る</figcaption></figure>
+    <figure class="ai-video"><video src="./assets/video/sv3.mp4" poster="./assets/video/sv3.jpg" muted loop playsinline controls preload="metadata"></video><figcaption>ビジネス：AI活用の解説</figcaption></figure>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">07 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     08 / 伴走 — 社長様のシステムを売れる商品へ
+     ============================================================ -->
+<section id="s08" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">08</span>
+    <span class="deck-header__title">パートナー体制 — コンサルタント様との連携</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">コンサルタント様と連携し、<span class="accent">バックエンド商品まで</span>伴走します。</h2>
+  <p class="slide-lead">発信で集める・商品をつくる・売る。コンサルタント様の商品設計と、私たちの発信・AI・システムをかけ合わせて進めます。</p>
+
+  <div class="step-flow">
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/p-crowd.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">01</span>
+        <span class="step-node__icon"><i class="icon-mask icon--megaphone"></i></span>
+      </div>
+      <h3 class="step-node__title">発信で集める</h3>
+      <p class="step-node__desc">HARUKA FILMが、AIを使った発信で認知を広げ、見込みのお客様を集める。</p>
+    </div>
+    <div class="step-conn"></div>
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/p-meeting.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">02</span>
+        <span class="step-node__icon"><i class="icon-mask icon--gear"></i></span>
+      </div>
+      <h3 class="step-node__title">商品をつくる</h3>
+      <p class="step-node__desc">コンサルタント様がバックエンド商品を設計。社長様のSNS半自動システムの商品化を、私たちがAIとシステムで支える。</p>
+    </div>
+    <div class="step-conn"></div>
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/p-handshake.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">03</span>
+        <span class="step-node__icon"><i class="icon-mask icon--bag"></i></span>
+      </div>
+      <h3 class="step-node__title">売る</h3>
+      <p class="step-node__desc">LP・LINE・決済の導線と広告で、問い合わせから契約までを一緒につなぐ。</p>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="band__icon"><i class="icon-mask icon--shake"></i></div>
+    <p>集客から商品づくり・販売まで、<em>チームで一気通貫に</em>伴走します。</p>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">08 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     動画以外もワンストップ(LP・LINE・EC・広告)
+     ============================================================ -->
+<section id="s08w" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">09</span>
+    <span class="deck-header__title">動画だけではないチーム</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">動画から<span class="accent">LP・LINE・広告まで</span>、一気通貫で。</h2>
+  <p class="slide-lead">集客の入口から問い合わせ・契約まで、制作会社を分けずに1つのチームで担当します。</p>
+
+  <div class="onestop">
+    <a class="onestop__work" href="https://www.jtg-sec.co.jp/lp/fx_a/" target="_blank" rel="noopener">
+      <img src="./assets/photo/proof/jtg-lp.jpg" alt="JTG証券 WEALTH FX LP" />
+      <div class="onestop__cap"><p class="onestop__tag">LP制作実績</p><p class="onestop__title">JTG証券様「WEALTH FX」LP</p><p class="onestop__url">jtg-sec.co.jp/lp/fx_a ↗</p></div>
+    </a>
+    <ul class="onestop__list">
+      <li><i class="icon-mask icon--screen"></i><div><b>ショート動画・AI動画</b><span>企画・撮影・AI制作・4媒体への投稿</span></div></li>
+      <li><i class="icon-mask icon--draft"></i><div><b>LP・HP制作</b><span>金融・人材・美容などのLPを多数制作</span></div></li>
+      <li><i class="icon-mask icon--chat"></i><div><b>LINE構築</b><span>リッチメニュー・ステップ配信・予約配信</span></div></li>
+      <li><i class="icon-mask icon--bag"></i><div><b>EC・会員サイト</b><span>教材販売・動画見放題・領収書の自動発行</span></div></li>
+      <li><i class="icon-mask icon--target"></i><div><b>広告運用・計測</b><span>Meta／ChatGPT広告・売上までの計測</span></div></li>
+    </ul>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">09 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     08 / HARUKA FILM — AIに強い制作チーム
+     ============================================================ -->
+<section id="s09" class="slide-paper has-corner">
+  <div class="corner-photo"><img src="./assets/photo/gen/t-team.jpg" alt="" /></div>
+  <div class="deck-header">
+    <span class="deck-header__pg">10</span>
+    <span class="deck-header__title">HARUKA FILM について</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">私たちは、<span class="accent">AIに強い制作チーム</span>です。</h2>
+
+  <div class="strengths">
+    <div class="strength">
+      <span class="strength__icon"><i class="icon-mask icon--gear"></i></span>
+      <div>
+        <p class="strength__title">お客様ごとに、<em>AIツールを作って導入</em>する</p>
+        <p class="strength__desc">代表はITコンサルタント出身。既製品を当てはめるのではなく、お客様の仕事に合わせてAIツールを作り、現場に入れて動かすところまで担当します。</p>
+      </div>
+    </div>
+    <div class="strength">
+      <span class="strength__icon"><i class="icon-mask icon--screen"></i></span>
+      <div>
+        <p class="strength__title">AI生成動画で、<em>オリジナルコンテンツをいくらでも</em></p>
+        <p class="strength__desc">撮影した素材に加えて、AIで生成したオリジナル動画を作れます。撮影のない週も、ネタ切れせずに発信を続けられます。</p>
+      </div>
+    </div>
+    <div class="strength">
+      <span class="strength__icon"><i class="icon-mask icon--team"></i></span>
+      <div>
+        <p class="strength__title">50名以上のチームで、<em>関西も関東も撮影</em>できる</p>
+        <p class="strength__desc">企画・撮影・編集・SNS運用・広告・システム開発まで社内でそろいます。撮影は関西・関東どちらでも、交通費込みで対応します。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">10 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     09 / 代表紹介
+     ============================================================ -->
+<section id="s10" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">11</span>
+    <span class="deck-header__title">代表紹介</span>
+    <span class="deck-header__rule"></span>
+  </div>
+
+  <div class="profile-grid">
+    <div>
+      <div class="profile-photo"><img src="./assets/photo/takahashi_right.png" alt="髙橋 聖" /></div>
+      <p class="profile-name">髙橋 聖<small>たかはし さとる</small></p>
+      <p class="profile-role">株式会社HARUKA FILM 代表<br>SNSコンサルタント<br>AIコンサルタント</p>
+    </div>
+
+    <div>
+      <h2 class="slide-h2">ITの現場から、<span class="accent">SNSとAIの両方</span>を<br>語れる立場へ。</h2>
+      <ul class="career">
+        <li><b>医療システムの現場</b><span>プログラマー・システムエンジニアとして、国立病院機構・大学病院などのシステム導入を担当</span></li>
+        <li><b>ITコンサルティング<br>マネージャー</b><span>コンサルティング会社のマネージャーとして、営業の仕組み化ツール（Salesforce）の提案・導入プロジェクトを推進</span></li>
+        <li><b>SNSの発信と育成</b><span>約3,500人のコミュニティを主宰。1,500人以上にSNSの戦略を伝え、1,000人以上を育成</span></li>
+        <li><b>HARUKA FILM 代表</b><span>50名以上のチームで、SNS運用・動画制作・AIツール開発。企業・医療機関でセミナー講師</span></li>
+      </ul>
+      <div class="clients">
+        <p class="clients__label">主な支援実績（企業・ブランド）</p>
+        <div class="clients__logos">
+          <img src="./assets/logos/daiichi-sankyo-hc.svg" alt="第一三共ヘルスケア" style="height:56px;max-width:190px" />
+          <img src="./assets/logos/taisho.svg" alt="大正製薬" />
+          <img src="./assets/logos/fujifilm.svg" alt="富士フイルム" />
+          <img src="./assets/logos/sunstar.svg" alt="サンスター" style="height:72px;max-width:170px" />
+          <img src="./assets/logos/airbnb.svg" alt="Airbnb" />
+          <img src="./assets/logos/cyberagent.svg" alt="サイバーエージェント" />
+        </div>
+        <p class="clients__more">日清食品グループ ／ 東京ガス ／ スクウェア・エニックス ほか（次のページ）</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">11 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     主な支援実績(ロゴ)
+     ============================================================ -->
+<section id="s10l" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">12</span>
+    <span class="deck-header__title">主な支援実績</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">名だたる企業の<span class="accent">広告・クリエイティブ</span>を支えています。</h2>
+
+  <div class="logo-grid logo-grid--all">
+    <div class="logo-cell"><img src="./assets/logos/nissin.svg" alt="日清食品グループ" /></div>
+    <div class="logo-cell"><img src="./assets/logos/daiichi-sankyo-hc.svg" alt="第一三共ヘルスケア" /></div>
+    <div class="logo-cell"><img src="./assets/logos/taisho.svg" alt="大正製薬" /></div>
+    <div class="logo-cell"><img src="./assets/logos/fujifilm.svg" alt="富士フイルム" /></div>
+    <div class="logo-cell"><img src="./assets/logos/sunstar.svg" alt="サンスター" style="width:88%;max-height:none" /></div>
+    <div class="logo-cell"><img src="./assets/logos/tokyo-gas.svg" alt="東京ガス" /></div>
+    <div class="logo-cell"><img src="./assets/logos/capital-group.svg" alt="キャピタルグループ" style="max-height:110px" /></div>
+    <div class="logo-cell"><img src="./assets/logos/airbnb.svg" alt="Airbnb" /></div>
+    <div class="logo-cell"><img src="./assets/logos/square-enix.svg" alt="スクウェア・エニックス" /></div>
+    <div class="logo-cell"><img src="./assets/logos/cyberagent.svg" alt="サイバーエージェント" /></div>
+    <div class="logo-cell"><img src="./assets/logos/utokyo.svg" alt="東京大学 松尾・岩澤研究室" /><small>松尾・岩澤研究室</small></div>
+    <div class="logo-cell"><img src="./assets/logos/jtg.png" alt="JTG証券" /></div>
+    <div class="logo-cell"><img src="./assets/logos/buysell.svg" alt="バイセル" /></div>
+    <div class="logo-cell"><img src="./assets/logos/en-tenshoku.svg" alt="エン転職" /></div>
+    <div class="logo-cell"><img src="./assets/logos/medley.svg" alt="メドレー" /></div>
+    <div class="logo-cell"><img src="./assets/logos/piala.svg" alt="ピアラ" /></div>
+    <div class="logo-cell"><img src="./assets/logos/hertech.svg" alt="HerTech" /></div>
+    <div class="logo-cell"><img src="./assets/logos/welbe.png" alt="ウェルビー" /></div>
+  </div>
+  <p class="logo-more">ほか、広告・SNS・Web制作で多数の企業様をご支援しています。</p>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">12 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     提案の全体像 — 人が型をつくり、AIで量産する
+     ============================================================ -->
+<section id="s10b" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">13</span>
+    <span class="deck-header__title">ご提案の全体像</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">AIを使いこなす社長様だからこそ、<span class="accent">AIで3つの選び方</span>を。</h2>
+  <p class="slide-lead">AIの文章があふれるほど、本人の顔と声が一番の差別化になります。人にしかできないところだけ人が担い、あとはAIで回します。</p>
+
+  <div class="step-flow step-flow--options">
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/c-video-ads.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">01</span>
+        <span class="step-node__icon"><i class="icon-mask icon--screen"></i></span>
+      </div>
+      <h3 class="step-node__title">量産する</h3>
+      <p class="step-node__desc">AIライトプラン。社長様が話した素材から、AIで1本8,000円〜（税別）。</p>
+    </div>
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/a-avatar.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">02</span>
+        <span class="step-node__icon"><i class="icon-mask icon--megaphone"></i></span>
+      </div>
+      <h3 class="step-node__title">認知を広げる</h3>
+      <p class="step-node__desc">AIハイブリッドプラン。社長様が登場するAI動画を、1本33,000円〜（税別）。</p>
+    </div>
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/a-dashboard.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">03</span>
+        <span class="step-node__icon"><i class="icon-mask icon--gear"></i></span>
+      </div>
+      <h3 class="step-node__title">自分で回す</h3>
+      <p class="step-node__desc">AI仕組み化プラン。自動で回る仕組みを一緒に作り、社長様の手元へ。</p>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="band__icon"><i class="icon-mask icon--check"></i></div>
+    <p>どのプランも、<em>長期契約の縛りはありません。</em></p>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">13 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     AIライトプラン
+     ============================================================ -->
+<section id="s11b" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">14</span>
+    <span class="deck-header__title">ご提案 — AIライトプラン</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">社長様が話すだけで、<span class="accent">あとはAIで量産</span>します。</h2>
+
+  <div class="offer-grid">
+    <div class="price price--photo" style="--img:url('./assets/photo/gen/s-edit.jpg')">
+      <p class="price__name">AIライトプラン</p>
+      <p class="price__num">8,000<small>円〜</small></p>
+      <p class="price__tax">1本あたり・税別（自動投稿込み）</p>
+      <p class="price__note">＋撮影オプション 1回5万円（税別）<br>インタビュー程度なら、<br>1〜2名で伺います。</p>
+    </div>
+
+    <div>
+      <ul class="includes includes--tight">
+        <li><span class="includes__icon"><i class="icon-mask icon--mic"></i></span><div><p class="includes__title">素材は直接お会いして撮るのがおすすめ（撮影オプション 1回5万円・税別）</p></div></li>
+        <li><span class="includes__icon"><i class="icon-mask icon--gear"></i></span><div><p class="includes__title">AIで切り抜き・字幕・テロップを自動作成し、4媒体へ自動投稿</p></div></li>
+        <li><span class="includes__icon"><i class="icon-mask icon--check"></i></span><div><p class="includes__title">担当者が最終確認して納品（AIまかせにしません）</p></div></li>
+      </ul>
+      <p class="apply-title">適用の条件（すべて満たす場合に1本8,000円〜／税別）</p>
+      <ul class="apply-list">
+        <li><b>素材</b>：社長様が話している映像（撮影オプションまたはご提供の素材）</li>
+        <li><b>編集</b>：話している場面の切り出し＋字幕・テロップ・BGMのシンプルな形式</li>
+        <li><b>尺</b>：60秒以内の縦型ショート動画</li>
+        <li><b>修正</b>：1本につき1回まで（テキストの軽微な修正）</li>
+        <li><b>対象外</b>：アニメーション・図解・複数素材の組み合わせ・凝った演出（→ 個別にお見積もり）</li>
+      </ul>
+      <p class="offer-foot">※ 適用できるかどうかは、打ち合わせで素材と形式を確認して決めます。</p>
+    </div>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">14 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     AIハイブリッドプラン — 半分AI・半分本人
+     ============================================================ -->
+<section id="s11c" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">15</span>
+    <span class="deck-header__title">ご提案 — AIハイブリッドプラン</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">半分AI、半分本人。<span class="accent">社長様が登場するAI動画</span>で認知を広げる。</h2>
+  <p class="slide-lead">一度の撮影で顔と声を素材にし、AIで動画を作ります。撮影費10万円（構成・台本込み）＋AI生成動画 1本33,000円〜（税別）</p>
+
+  <div class="step-flow">
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/h-quiz.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">01</span>
+        <span class="step-node__icon"><i class="icon-mask icon--loupe"></i></span>
+      </div>
+      <h3 class="step-node__title">「どっちが本物？」クイズ</h3>
+      <p class="step-node__desc">実写の社長様とAI社長様を並べて出題。答えたくなって、コメントが自然と集まる参加型。</p>
+    </div>
+    <div class="step-conn"></div>
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/a-avatar.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">02</span>
+        <span class="step-node__icon"><i class="icon-mask icon--chat"></i></span>
+      </div>
+      <h3 class="step-node__title">AI社長様の「経営者あるある」</h3>
+      <p class="step-node__desc">共感を集めたThreadsの言葉を、AI社長様が30秒で語る。毎日投稿でき、半自動システムの実演にも。</p>
+    </div>
+    <div class="step-conn"></div>
+    <div class="step-node step-node--photo" style="--img:url('./assets/photo/gen/h-future-site.jpg')">
+      <div class="step-node__top">
+        <span class="step-node__num">03</span>
+        <span class="step-node__icon"><i class="icon-mask icon--growth"></i></span>
+      </div>
+      <h3 class="step-node__title">現場ビフォーアフター</h3>
+      <p class="step-node__desc">いつもの現場が、2秒でAIの「未来の現場」に変身。冒頭で指を止めさせる変身動画。</p>
+    </div>
+  </div>
+  <p class="offer-foot">※ AI生成であることの表示と、顔と声を使う範囲は、事前に取り決めて安全に運用します。</p>
+
+  <div class="band">
+    <div class="band__icon"><i class="icon-mask icon--check"></i></div>
+    <p>フォーマットは実施前に、<em>今エンゲージメントの高い投稿をリサーチ</em>し、最新の勝ちパターンからご提案します。</p>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">15 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     AI仕組み化プラン — 自動で回る仕組みを一緒に作る
+     ============================================================ -->
+<section id="s11d" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">16</span>
+    <span class="deck-header__title">ご提案 — AI仕組み化プラン</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">作って終わりではなく、<span class="accent">自動で回る仕組み</span>を一緒に。</h2>
+
+  <div class="offer-grid">
+    <div class="price price--photo" style="--img:url('./assets/photo/gen/a-dashboard.jpg')">
+      <p class="price__name">AI仕組み化プラン</p>
+      <p class="price__num">20<small>万円 / 月</small></p>
+      <p class="price__tax">税別 ／ 初期費用 10万円〜</p>
+      <p class="price__note">自動化できたら、<br>月単位でいつでも<br>解除していただけます。</p>
+    </div>
+
+    <div>
+      <ul class="includes">
+        <li><span class="includes__icon"><i class="icon-mask icon--chat"></i></span><div><p class="includes__title">打ち合わせで、何を自動にするかを決める</p><p class="includes__desc">社長様のSNS半自動システムも含めて、全体を設計</p></div></li>
+        <li><span class="includes__icon"><i class="icon-mask icon--gear"></i></span><div><p class="includes__title">自動で回る仕組みを構築する</p><p class="includes__desc">投稿の文章から動画づくりまで、社長様の手元で回る形に</p></div></li>
+        <li><span class="includes__icon"><i class="icon-mask icon--camera"></i></span><div><p class="includes__title">撮影も伴走する</p><p class="includes__desc">何を撮れば仕組みに乗るか、撮り方から一緒に</p></div></li>
+        <li><span class="includes__icon"><i class="icon-mask icon--bag"></i></span><div><p class="includes__title">建設業界向けの商品にする相談も</p><p class="includes__desc">できた仕組みは、そのまま社長様の商品の強みになります</p></div></li>
+      </ul>
+      <p class="offer-foot">※ AIツールの開発・導入は、私たちの本業です（代表はITコンサルタント出身）。</p>
+    </div>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">16 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     料金比較: 同じご予算で本数2倍以上
+     ============================================================ -->
+<section id="s11p" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">17</span>
+    <span class="deck-header__title">料金シミュレーション — 同じご予算で比べると</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">同じご予算なら<span class="accent">本数が多く</span>、同じ本数なら<span class="accent">安く。</span></h2>
+  <p class="slide-lead">撮影1回の素材から、AIで量産します。長期契約の縛りなし／撮影は交通費込み／4媒体への自動投稿込み（税別）。</p>
+
+  <div class="sim">
+    <div class="sim__col">
+      <p class="sim__budget">ご予算 <b>20</b>万円</p>
+      <div class="sim__row"><p class="sim__who">一般的な<br>動画制作</p><div class="sim__tiles"><i class="t t--them"></i><i class="t t--them"></i><i class="t t--them"></i><i class="t t--them"></i><i class="t t--them"></i><i class="t t--them"></i></div><p class="sim__n sim__n--them">6<small>本</small></p></div>
+      <div class="sim__row sim__row--us"><p class="sim__who">HARUKA FILM<br><span>AIライト</span></p><div class="sim__tiles"><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i></div><p class="sim__n">9<small>本</small></p></div>
+      <p class="sim__price">197,000円（税別）<span>×1.5倍</span></p>
+    </div>
+    <div class="sim__col">
+      <p class="sim__budget">ご予算 約<b>25</b>万円</p>
+      <div class="sim__row"><p class="sim__who">一般的な<br>動画制作</p><div class="sim__tiles"><i class="t t--them"></i><i class="t t--them"></i><i class="t t--them"></i><i class="t t--them"></i><i class="t t--them"></i><i class="t t--them"></i><i class="t t--them"></i><i class="t t--them"></i></div><p class="sim__n sim__n--them">8<small>本</small></p></div>
+      <div class="sim__row sim__row--us"><p class="sim__who">HARUKA FILM<br><span>AIライト</span></p><div class="sim__tiles"><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i><i class="t"></i></div><p class="sim__n">16<small>本</small></p></div>
+      <p class="sim__price">253,000円（税別）<span>×2倍</span></p>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="band__icon"><i class="icon-mask icon--growth"></i></div>
+    <p>同じ8本なら<em>189,000円</em>（税別／一般的な制作 約25万円）。量が増えるほど、当たる型が早く見つかります。</p>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">17 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     料金のしくみ(式と早見表)
+     ============================================================ -->
+<section id="s11q" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">18</span>
+    <span class="deck-header__title">料金シミュレーション — 料金のしくみ</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">基本料金 ＋ <span class="accent">本数</span>で決まる、シンプルな料金です。</h2>
+
+  <div class="formula">
+    <div class="formula__box formula__box--base">
+      <p class="formula__k">基本料金（1回・税別）</p>
+      <p class="formula__v">125,000<small>円</small></p>
+      <ul><li>ディレクション 55,000円<small>企画・台本・打ち合わせ</small></li><li>撮影 50,000円<small>半日・交通費込み</small></li><li>月次レポート 20,000円</li></ul>
+    </div>
+    <p class="formula__op">＋</p>
+    <div class="formula__box">
+      <p class="formula__k">動画の本数（税別）</p>
+      <div class="formula__unit"><span>AIライト</span><b>8,000<small>円／本</small></b></div>
+      <div class="formula__unit formula__unit--hi"><span>AI生成動画<small>社長様が登場</small></span><b>33,000<small>円／本</small></b></div>
+      <p class="formula__note">どちらも4媒体への自動投稿込み</p>
+    </div>
+    <p class="formula__op">＝</p>
+    <div class="formula__box formula__box--sum">
+      <p class="formula__k">早見表（AIライトのみ・税別）</p>
+      <table class="quick">
+        <tr><td>8本</td><td>189,000円</td></tr>
+        <tr class="is-hi"><td>9本</td><td>197,000円</td></tr>
+        <tr><td>12本</td><td>221,000円</td></tr>
+        <tr class="is-hi"><td>16本</td><td>253,000円</td></tr>
+        <tr><td>20本</td><td>285,000円</td></tr>
+      </table>
+      <p class="formula__note">AI生成動画を1本加えるごとに +33,000円（税別）</p>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="band__icon"><i class="icon-mask icon--growth"></i></div>
+    <p>本数はご予算に合わせて、<em>1本単位で調整</em>できます。</p>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">18 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     11 / 比較
+     ============================================================ -->
+<section id="s12" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">19</span>
+    <span class="deck-header__title">ほかの選択肢との違い</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">動画を作るだけでは、<span class="accent">目的まで届きません。</span></h2>
+
+  <div class="compare">
+    <div class="compare__head">
+      <p></p>
+      <p class="c-them">一般的なショート動画制作</p>
+      <p class="c-us c-us--brand"><img src="./assets/logos/harukafilm.png" alt="" />HARUKA FILM</p>
+    </div>
+    <div class="compare__row"><p class="c-label">契約</p><p class="c-them"><i class="mk mk--them">△</i>6ヶ月の契約が多い</p><p class="c-us"><i class="mk">◎</i>長期の縛りなし。1本単位・月単位で</p></div>
+    <div class="compare__row"><p class="c-label">量産のコスト</p><p class="c-them"><i class="mk mk--them">△</i>1本あたり数万円</p><p class="c-us"><i class="mk">◎</i>AIで1本8,000円〜（税別）</p></div>
+    <div class="compare__row"><p class="c-label">撮影</p><p class="c-them"><i class="mk mk--them">△</i>期間中に1回程度・交通費は別</p><p class="c-us"><i class="mk">◎</i>必要なときに、1回5万円〜で伺う</p></div>
+    <div class="compare__row"><p class="c-label">ゴール</p><p class="c-them"><i class="mk mk--them">△</i>動画の納品まで</p><p class="c-us"><i class="mk">◎</i>社長様の手元で自動で回る仕組みまで</p></div>
+    <div class="compare__row"><p class="c-label">成果の物差し</p><p class="c-them"><i class="mk mk--them">△</i>再生数</p><p class="c-us"><i class="mk">◎</i>保存・DM・問い合わせ</p></div>
+    <div class="compare__row"><p class="c-label">建設業界</p><p class="c-them"><i class="mk mk--them">—</i></p><p class="c-us"><i class="mk">◎</i>資格対策スクール様の支援実績あり</p></div>
+    <div class="compare__row"><p class="c-label">AI</p><p class="c-them"><i class="mk mk--them">—</i></p><p class="c-us"><i class="mk">◎</i>AI生成動画と、社長様のシステムの商品化まで</p></div>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">19 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     体制図(2026-10-26 ぺここさん了承済み)
+     ============================================================ -->
+<section id="s13o" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">20</span>
+    <span class="deck-header__title">プロジェクト体制</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">それぞれの専門家が、<span class="accent">1つのチーム</span>で伴走します。</h2>
+
+  <div class="org">
+    <div class="org__top"><p class="org__role">クライアント</p><p class="org__name">KENRO様</p></div>
+    <div class="org__line org__line--v"></div>
+    <div class="org__pm"><p class="org__role">PM・全体設計</p><p class="org__name">浅野様</p><p class="org__desc">方向性の決定と進行管理</p></div>
+    <div class="org__branch"><i></i><i></i></div>
+    <div class="org__row">
+      <div class="org__box"><p class="org__role">バックエンド商品制作</p><p class="org__name">川島様</p><p class="org__desc">建築業界向けAIシステム（研修付き）</p></div>
+      <div class="org__box org__box--us"><img class="org__logo" src="./assets/logos/harukafilm.png" alt="HARUKA FILM" /><div><p class="org__role">ショート動画制作・自動投稿</p><p class="org__name">HARUKA FILM</p><p class="org__desc">AI×実写の動画制作<br>4媒体への自動投稿・広告で拡大</p></div></div>
+    </div>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">20 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     体制と始めるまでの流れ
+     ============================================================ -->
+<section id="s14" class="slide-paper">
+  <div class="deck-header">
+    <span class="deck-header__pg">21</span>
+    <span class="deck-header__title">体制と進め方</span>
+    <span class="deck-header__rule"></span>
+  </div>
+  <h2 class="slide-h2">社長様は、<span class="accent">話すだけ</span>で大丈夫です。</h2>
+
+  <div class="roles">
+    <div class="role">
+      <p class="role__who">KENRO様</p>
+      <p class="role__what">撮影で、いつもの本音を話す。投稿の最終確認をする。</p>
+    </div>
+    <div class="role">
+      <p class="role__who">コンサルタント（PM）</p>
+      <p class="role__what">全体の方向性と進行。バックエンド商品の設計を伴走。</p>
+    </div>
+    <div class="role">
+      <p class="role__who">HARUKA FILM</p>
+      <p class="role__what">発信の設計・撮影・AIでの制作・仕組みづくり。</p>
+    </div>
+  </div>
+
+  <p class="flow-title">始めるまでの流れ</p>
+  <div class="chev">
+    <div class="chev__step" style="--c:#dff3f0;--t:var(--color-deep-teal)"><p class="chev__no">STEP<b>1</b></p><i class="icon-mask icon--chat"></i><p class="chev__title">打ち合わせ</p><p class="chev__desc">プランと型を決める</p></div>
+    <div class="chev__step" style="--c:#dff3f0;--t:var(--color-deep-teal)"><p class="chev__no">STEP<b>2</b></p><i class="icon-mask icon--draft"></i><p class="chev__title">構成・台本</p><p class="chev__desc">勝ちパターンから設計</p></div>
+    <div class="chev__step chev__step--hi" style="--c:var(--color-abyss-teal);--t:var(--color-white)"><p class="chev__badge">社長様の出番はここだけ</p><p class="chev__no">STEP<b>3</b></p><i class="icon-mask icon--camera"></i><p class="chev__title">撮影</p><p class="chev__desc">社長様は話すだけ</p></div>
+    <div class="chev__step" style="--c:#dff3f0;--t:var(--color-deep-teal)"><p class="chev__no">STEP<b>4</b></p><i class="icon-mask icon--gear"></i><p class="chev__title">AIで制作</p><p class="chev__desc">担当者が最終確認</p></div>
+    <div class="chev__step" style="--c:#dff3f0;--t:var(--color-deep-teal)"><p class="chev__no">STEP<b>5</b></p><i class="icon-mask icon--growth"></i><p class="chev__title">納品・投稿</p><p class="chev__desc">数字で振り返り</p></div>
+  </div>
+
+  <div class="band">
+    <div class="band__icon"><i class="icon-mask icon--check"></i></div>
+    <p>AIライト・ハイブリッドは1本単位、仕組み化は<em>月単位でいつでも解除</em>できます。</p>
+  </div>
+
+  <div class="deck-footer"><span>HARUKA FILM</span><span class="pg">21 / 21</span></div>
+</section>
+
+<!-- ============================================================
+     締め
+     ============================================================ -->
+<section id="s15" class="slide-paper cta">
+  <div class="cta__grid">
+    <div class="cta__left">
+      <p class="cta__eyebrow">NEXT STEP</p>
+      <p class="cta__title">KENRO様の言葉の力を、<br><em>より多くの方へ。</em></p>
+      <p class="cta__lead">まずは一度、お打ち合わせの機会をください。<br>現在の発信とご要望を伺い、最適なプランと<br>お見積もりをご提示します。</p>
+    </div>
+    <ol class="cta__steps">
+      <li><span class="cta__num">01</span><div><p class="cta__step">お打ち合わせ</p><p class="cta__desc">ご要望と現在の発信を伺います（オンライン可）</p></div></li>
+      <li><span class="cta__num">02</span><div><p class="cta__step">プランとお見積もり</p><p class="cta__desc">AIライト／ハイブリッド／仕組み化から最適な組み合わせを</p></div></li>
+      <li><span class="cta__num">03</span><div><p class="cta__step">撮影・制作スタート</p><p class="cta__desc">関西・関東どちらでも伺います</p></div></li>
+    </ol>
+  </div>
+  <div class="cta__contact">
+    <img src="./_design-system/assets/logo.png" alt="HARUKA FILM" />
+    <p class="cta__company">株式会社HARUKA FILM<span>代表取締役　髙橋 聖</span></p>
+    <p class="cta__mail">takahashi@harukafilm.com</p>
+  </div>
+</section>
+
+</deck-stage>
+
+<script src="./_design-system/deck-stage.js"></script>
+</body>
+</html>

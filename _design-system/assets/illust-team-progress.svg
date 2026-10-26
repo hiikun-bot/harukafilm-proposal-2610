@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg" fill="none" role="img" aria-label="病院全体で前進するチームのイラスト">
+  <!-- 上昇する大きな矢印(背景に薄く) -->
+  <g opacity="0.22">
+    <path d="M 50 800 Q 230 670, 400 500 T 720 220"
+          stroke="#4ECDC4" stroke-width="22" stroke-linecap="round" fill="none" />
+    <!-- 矢じり(右上に開く) -->
+    <path d="M 720 220 L 640 246"
+          stroke="#4ECDC4" stroke-width="22" stroke-linecap="round" fill="none" />
+    <path d="M 720 220 L 698 300"
+          stroke="#4ECDC4" stroke-width="22" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- 床(地平線)を示す細い線 -->
+  <line x1="40" y1="822" x2="760" y2="822" stroke="#4ECDC4" stroke-width="2" opacity="0.25"/>
+
+  <!-- 人物グループ(左→右で大きくなる:遠くから近くへ・後輩から先頭へ) -->
+
+  <!-- 人物1(最も遠い) -->
+  <g transform="translate(140 808) scale(0.65)" fill="#C5EAE5">
+    <circle cx="0" cy="-150" r="26"/>
+    <rect x="-40" y="-118" width="80" height="118" rx="40"/>
+  </g>
+
+  <!-- 人物2 -->
+  <g transform="translate(290 808) scale(0.82)" fill="#86D7CF">
+    <circle cx="0" cy="-150" r="26"/>
+    <rect x="-40" y="-118" width="80" height="118" rx="40"/>
+  </g>
+
+  <!-- 人物3(中心、ブランドティール) -->
+  <g transform="translate(460 808) scale(1.0)" fill="#4ECDC4">
+    <circle cx="0" cy="-150" r="26"/>
+    <rect x="-40" y="-118" width="80" height="118" rx="40"/>
+  </g>
+
+  <!-- 人物4(先頭、最も大きく濃い深ティール) -->
+  <g transform="translate(660 808) scale(1.18)" fill="#0F3D3A">
+    <circle cx="0" cy="-150" r="26"/>
+    <rect x="-40" y="-118" width="80" height="118" rx="40"/>
+  </g>
+
+  <!-- 先頭人物の上に小さな星(到達感) -->
+  <g transform="translate(720 410)" fill="#4ECDC4" opacity="0.55">
+    <path d="M 0 -22 L 6 -7 L 22 -7 L 9 3 L 14 18 L 0 9 L -14 18 L -9 3 L -22 -7 L -6 -7 Z"/>
+  </g>
+</svg>

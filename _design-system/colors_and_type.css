@@ -1,0 +1,237 @@
+/* =============================================================
+   HARUKA FILM — Design Tokens
+   Tech × Cinema — Teal + Deep Teal
+   ============================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+:root {
+  /* === Brand palette (from BRAND.md) =========================== */
+  --color-brand-teal:  #4ECDC4;  /* primary  — accents, underlines, highlights */
+  --color-deep-teal:   #2D7A75;  /* sub      — dark accents, secondary fills    */
+  --color-abyss-teal:  #155E57;  /* dark bg  — cover, section dividers (fresh)  */
+  --color-abyss-deep:  #0F3D3A;  /* legacy deeper anchor — gradients only       */
+  --color-stage:       #050a0a;  /* off-frame stage (around 16:9 canvas)        */
+  --color-mist-teal:   #E0F7F5;  /* light bg — soft tinted background           */
+  --color-ivory:       #FAFDFC;  /* paper    — default light page               */
+  --color-ivory-soft:  rgba(250, 253, 252, 0.92);
+  --color-hairline:    rgba(250, 253, 252, 0.85);
+
+  --color-ink:         #1A1A1A;  /* body text */
+  --color-slate:       #5A6B6A;  /* secondary text, captions */
+  --color-mist-gray:   #D6E5E3;  /* dividers, borders */
+
+  --color-white:       #FFFFFF;
+  --color-black:       #000000;
+
+  /* Semantic surfaces */
+  --bg-cover:          var(--color-abyss-teal);
+  --bg-page:           var(--color-ivory);
+  --bg-page-tinted:    var(--color-mist-teal);
+  --bg-card:           var(--color-white);
+  --bg-section-dark:   var(--color-abyss-teal);
+
+  --fg-default:        var(--color-ink);
+  --fg-muted:          var(--color-slate);
+  --fg-inverse:        var(--color-ivory);
+  --fg-accent:         var(--color-deep-teal);
+
+  --border-hairline:   var(--color-mist-gray);
+  --border-accent:     var(--color-brand-teal);
+
+  /* Gradient — used for tech-cinema decorative ramps */
+  --gradient-brand:    linear-gradient(135deg, #4ECDC4 0%, #2D7A75 100%);
+  --gradient-cover-overlay:
+    radial-gradient(ellipse at 50% -10%, rgba(255, 255, 255, 0.20), transparent 55%),
+    radial-gradient(ellipse at 50% 110%, rgba(15, 61, 58, 0.18), transparent 60%);
+
+  /* === Type stacks ============================================ */
+  --font-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+             "Yu Gothic", "Meiryo UI", system-ui, sans-serif;
+  /* Outfit (Google Fonts) — geometric sans, Futura-adjacent. Brand-approved English face. */
+  --font-en: "Outfit", "Futura", "Trebuchet MS", "Helvetica Neue",
+             Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular",
+               Menlo, Consolas, monospace;
+
+  /* Weight roles — Noto Sans JP scale */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-bold:     700;
+  --weight-black:    900;
+
+  /* === Type scale (1920×1080 deck baseline) =================== */
+  /* Display-size for cover title, then a calm step-down */
+  --type-display:    96px;   /* cover title           */
+  --type-h1:         64px;   /* section-opener title  */
+  --type-h2:         48px;   /* slide title           */
+  --type-h3:         34px;   /* subtitle / eyebrow xl */
+  --type-h4:         28px;   /* card title            */
+  --type-lead:       24px;   /* lead paragraph        */
+  --type-body:       20px;   /* default body          */
+  --type-small:      16px;   /* footer / caption      */
+  --type-meta:       12px;   /* eyebrow / data label  */
+
+  /* Letter-spacing — generous for JP display, EN uppercase */
+  --tracking-display: 0.12em;
+  --tracking-h:       0.06em;
+  --tracking-eyebrow: 0.42em;  /* the signature widely-tracked label */
+  --tracking-meta:    0.32em;
+  --tracking-body:    0.02em;
+
+  /* Line heights */
+  --leading-tight:   1.05;
+  --leading-snug:    1.25;
+  --leading-normal:  1.6;
+  --leading-loose:   1.8;
+
+  /* === Spacing scale (8px base) ================================ */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* === Radii ================================================== */
+  --radius-xs:  2px;
+  --radius-sm:  4px;
+  --radius-md:  8px;     /* card slide canvas radius */
+  --radius-lg:  16px;
+  --radius-pill: 999px;
+
+  /* === Shadows — restrained, no candy drop shadows ============ */
+  --shadow-cover:   0 24px 60px rgba(0, 0, 0, 0.40);
+  --shadow-card:    0 8px 24px rgba(15, 61, 58, 0.08);
+  --shadow-card-hi: 0 16px 40px rgba(15, 61, 58, 0.12);
+  --shadow-inset-line: inset 0 -1px 0 var(--border-hairline);
+
+  /* === Motion ================================================= */
+  --ease-emph:  cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft:  cubic-bezier(0.40, 0, 0.20, 1);
+  --dur-fast:   180ms;
+  --dur-base:   320ms;
+  --dur-slow:   640ms;
+  --dur-scene:  1400ms;
+
+  /* === Slide canvas =========================================== */
+  --slide-w: 1920px;
+  --slide-h: 1080px;
+}
+
+/* =============================================================
+   Semantic type rules
+   ============================================================= */
+html, body {
+  font-family: var(--font-jp);
+  color: var(--fg-default);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.t-display,
+h1.t-cover {
+  font-family: var(--font-jp);
+  font-weight: var(--weight-black);
+  font-size: var(--type-display);
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-tight);
+}
+
+h1, .t-h1 {
+  font-family: var(--font-jp);
+  font-weight: var(--weight-bold);
+  font-size: var(--type-h1);
+  letter-spacing: var(--tracking-h);
+  line-height: var(--leading-snug);
+}
+
+h2, .t-h2 {
+  font-family: var(--font-jp);
+  font-weight: var(--weight-bold);
+  font-size: var(--type-h2);
+  letter-spacing: var(--tracking-h);
+  line-height: var(--leading-snug);
+}
+
+h3, .t-h3 {
+  font-family: var(--font-jp);
+  font-weight: var(--weight-medium);
+  font-size: var(--type-h3);
+  letter-spacing: 0.04em;
+  line-height: var(--leading-snug);
+}
+
+.t-eyebrow {
+  font-family: var(--font-jp);
+  font-weight: var(--weight-medium);
+  font-size: var(--type-meta);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: none;
+  color: var(--fg-muted);
+}
+
+.t-eyebrow--en {
+  font-family: var(--font-en);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-meta);
+}
+
+p, .t-body {
+  font-family: var(--font-jp);
+  font-weight: var(--weight-regular);
+  font-size: var(--type-body);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-body);
+  color: var(--fg-default);
+}
+
+.t-lead {
+  font-size: var(--type-lead);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+}
+
+.t-small,
+small {
+  font-size: var(--type-small);
+  color: var(--fg-muted);
+  line-height: var(--leading-normal);
+}
+
+.t-meta {
+  font-family: var(--font-en);
+  font-size: var(--type-meta);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.t-num,
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0;
+}
+
+/* Inline highlight — bold + teal underline */
+.t-mark {
+  font-weight: var(--weight-bold);
+  background:
+    linear-gradient(transparent 62%, rgba(78, 205, 196, 0.30) 62%, rgba(78, 205, 196, 0.30) 92%, transparent 92%);
+}
+
+/* Hairline accent — the recurring "tech" detail */
+.hairline {
+  display: block;
+  height: 1px;
+  background: var(--border-accent);
+  width: 56px;
+}
+.hairline--full   { width: 100%; background: var(--border-hairline); }
+.hairline--ivory  { background: var(--color-hairline); }
